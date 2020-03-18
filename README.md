@@ -6,7 +6,7 @@
 |email|string|null: false, unique: true|
 
 ### Association
-- has_many :items
+- has_many :items dependent: :destroy
 - has_many :likes dependent: :destroy
 - has_many :comments dependent: :destroy
 - has_one :deliver_adresses dependent: :destroy
@@ -15,7 +15,7 @@
 
 ## ordersテーブル
 |Column|Type|Options|
-|buyer_user_id|references|null: false, FK: true|
+|buyer_id|references|null: false, FK: true|
 |item_id|references|null: false, FK: true|
 ### Association
 - belongs_to :user
@@ -116,6 +116,7 @@ belongs_to :user
 |ancestry|string||	
 ### Association
 - has_many :items
+- has ancestry
 
 ## sizesテーブル
 |Column|Type|Options|
