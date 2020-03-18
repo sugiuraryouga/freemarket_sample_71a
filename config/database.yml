@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: freemarket_sample_71a_production
+  username: freemarket_sample_71a
+  password: <%= ENV['FREEMARKET_SAMPLE_71A_DATABASE_PASSWORD'] %>
