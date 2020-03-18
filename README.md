@@ -1,24 +1,135 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string¥null: false|
+|password|string|null: false|
+|email|string|null: false, unique: true|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :items
+- has_many :likes dependent: :destroy
+- has_many :comments dependent: :destroy
+- has_one :deliver_adresses dependent: :destroy
+- has_one :credit_card, dependent: :destroy
+- has_one :profile, dependent: :destroy
 
-Things you may want to cover:
+## ordersテーブル
+|Column|Type|Options|
+|buyer_user_id|references|null: false, FK: true|
+|item_id|references|null: false, FK: true|
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* Ruby version
+## profilesテーブル
+|Column|Type|Options|
+|first_name|string|null:false|
+|family_name|string|null:false|
+|first_name_kana|string|null:false|
+|family_name_kana|string|null:false|
+|birth_year|date|null:false|
+|birth_month|date|null:false|
+|birth_day|date|null:false|
+|introduction|text||		
+|user|references|null: false, foreign_key: true|
+### Association
+belongs_to :user
 
-* System dependencies
+## deliver_adressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, FK: true|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|adress1|string|null: false|
+|adress2|string||	
+|telephone|string|unique: true|
+### Association
+- belongs_to :user
 
-* Configuration
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, FK: true|
+|item_id|references|null: false, FK: true|
+|text|text|null: false|
+### Association
+- belongs_to :user
+- belongs_to :item 
 
-* Database creation
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null:false, FK: true|
+|item_id|references|null:false, FK: true|
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* Database initialization
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|category_id|references|null: false, FK: true|
+|name|string|null: false|
+|text|text|null: false|
+|price|integer|null: false|
+|trading_status|integer|null: false|
+|completed_at|datetime||	
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :delivery_charge
+- has_many :likes dependent: :destroy
+- has_many :comments dependent: :destroy
+- has_many :item_images dependent: :destroy
 
-* How to run the test suite
+### item_conditionテーブル
+|Column|Type|Options|
+|------|----|-------|
+|condition|integer|null: false|
+### Association
+- belongs_to :item
 
-* Services (job queues, cache servers, search engines, etc.)
+## item_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, FK: true|
+|image_url|string|null: false|
+### Association
+- belongs_to :item
 
-* Deployment instructions
+## delivery_chargeテーブル
+|Column|type|Option|
+|------|----|-------|
+|price|integer|null: false|
+### Association
+- belongs_to :item
 
-* ...
+## categoriesテーブル
+|Column|type|Option|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string||	
+### Association
+- has_many :items
+
+## sizesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|size|string|null: false|
+### Association
+- has_many :items
+
+## credit_cardsテーブル
+|Column|Type|Options|
+|card_number|integer|null:false, unique: true|
+|expiration_year|integer|null:false|
+|expiration_month|integer|null:false|
+|security_code|integer|null:false|
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to:user
