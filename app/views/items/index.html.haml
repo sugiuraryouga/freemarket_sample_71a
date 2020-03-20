@@ -7,7 +7,7 @@
         .index__header__inner__main__icon
           = form_with url: "#", local: true, method: :get do |f|
             .form-group
-              %img{alt: "顔写真1", class: "FURIMA-btn", src: "/assets/logo.png" }
+              = image_tag "/assets/logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
               = f.text_field :keyword, class: 'form__sach', placeholder: 'キーワードから探す'
               = button_tag type: 'submit', class: "follow-btn" do
                 = icon('fa', 'search')
@@ -43,25 +43,34 @@
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             1
-          %img{alt: "顔写真1", class: "topIntroduction-leftimage", src: "/assets/pict-reason-01.jpg" }
-          .index__main__topIntroduction__lists__text
-            <font color="#3CCACE">３分 </font>ですぐに出品
+          = image_tag "/assets/pict-reason-01.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-leftimage"
+          .index__main__topIntroduction__lists__texts
+            .index__main__topIntroduction__lists__texts__colortext
+              ３分 
+            .index__main__topIntroduction__lists__texts__text
+              ですぐに出品
           .index__main__topIntroduction__lists__description
             スマホで入力するだけで簡単に出品できる！
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             2
-          %img{alt: "顔写真1", class: "topIntroduction-centerimage", src: "/assets/pict-reason-02.jpg" }
-          .index__main__topIntroduction__lists__text
-            <font color="#3CCACE">シンプル </font>で使いやすい
+          = image_tag "/assets/pict-reason-02.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-centerimage"
+          .index__main__topIntroduction__lists__texts
+            .index__main__topIntroduction__lists__texts__colortext
+              シンプル 
+            .index__main__topIntroduction__lists__texts__text
+              で使いやすい
           .index__main__topIntroduction__lists__description       
             めんどくさい入力は必要なく、検索も購入もスムーズ！
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             3
-          %img{alt: "顔写真1", class: "topIntroduction-rightimage", src: "/assets/pict-reason-03.jpg" }
-          .index__main__topIntroduction__lists__text
-            手数料<font color="#3CCACE">業界最安 </font>
+          = image_tag "/assets/pict-reason-03.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-rightimage"
+          .index__main__topIntroduction__lists__texts
+            .index__main__topIntroduction__lists__texts__text
+              手数料
+            .index__main__topIntroduction__lists__texts__colortext
+              業界最安            
           .index__main__topIntroduction__lists__description
             スマホで入力するだけで簡単に出品できる！
     .index__main__topMiddleDl
@@ -83,19 +92,19 @@
         FURIMAの特徴
     .index__main__items
       .index__main__items__item
-        %img{alt: "顔写真1", class: "item-image", src: "/assets/icon-01.png" }
+        = image_tag "icon-01.png", alt: "Rails icon", id: "pic1", class: "item-image"
         .index__main__items__item__subtitle
           簡単に売り買いできる
         .index__main__topIntroduction__subtitle__items__item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .index__main__items__item
-        %img{alt: "顔写真1", class: "item-image", src: "/assets/icon-03.png" }
+        = image_tag "/assets/icon-03.png", alt: "Rails icon", id: "pic1", class: "item-image"
         .index__main__items__item__subtitle
           簡単に売り買いできる
         .index__main__items__item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .index__main__topIntroduction__subtitle__items__item
-        %img{alt: "顔写真1", class: "item-image", src: "/assets/icon-04.png" }
+        = image_tag "/assets/icon-04.png", alt: "Rails icon", id: "pic1", class: "item-image"
         .index__main__items__item__subtitle
           簡単に売り買いできる
         .index__main__items__item__detail
