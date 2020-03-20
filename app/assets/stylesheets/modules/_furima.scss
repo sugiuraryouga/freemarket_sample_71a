@@ -210,6 +210,11 @@
         margin: 0 2% 0 0;
       }
     }
+  &__main {
+    background-color: red;
+    display: flex;
+    align-items: center;
+
   }
 }
 .form__sach {
@@ -270,4 +275,5 @@
   position: fixed;
   padding: 15px;
   z-index: 1;
+}
 }
