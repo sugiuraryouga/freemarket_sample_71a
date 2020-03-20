@@ -1,6 +1,6 @@
 .index
   .index__camera
-    -# = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), root_path
+    = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), root_path
   .index__header
     .index__header__inner
       .index__header__inner__main
@@ -43,7 +43,7 @@
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             1
-          = image_tag "pict-reason-01.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-leftimage"
+          = image_tag "/assets/pict-reason-01.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-leftimage"
           .index__main__topIntroduction__lists__texts
             .index__main__topIntroduction__lists__texts__colortext
               ３分 
@@ -54,7 +54,7 @@
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             2
-          = image_tag "pict-reason-02.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-centerimage"
+          = image_tag "/assets/pict-reason-02.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-centerimage"
           .index__main__topIntroduction__lists__texts
             .index__main__topIntroduction__lists__texts__colortext
               シンプル 
@@ -65,7 +65,7 @@
         .index__main__topIntroduction__lists__pict
           .index__main__topIntroduction__lists__pict__number
             3
-          = image_tag "pict-reason-03.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-rightimage"
+          = image_tag "/assets/pict-reason-03.jpg", alt: "Rails icon", id: "pic1", class: "topIntroduction-rightimage"
           .index__main__topIntroduction__lists__texts
             .index__main__topIntroduction__lists__texts__text
               手数料
@@ -98,13 +98,13 @@
         .index__main__topIntroduction__subtitle__items__item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .index__main__items__item
-        = image_tag "icon-03.png", alt: "Rails icon", id: "pic1", class: "item-image"
+        = image_tag "/assets/icon-03.png", alt: "Rails icon", id: "pic1", class: "item-image"
         .index__main__items__item__subtitle
           簡単に売り買いできる
         .index__main__items__item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .index__main__topIntroduction__subtitle__items__item
-        = image_tag "icon-04.png", alt: "Rails icon", id: "pic1", class: "item-image"
+        = image_tag "/assets/icon-04.png", alt: "Rails icon", id: "pic1", class: "item-image"
         .index__main__items__item__subtitle
           簡単に売り買いできる
         .index__main__items__item__detail
