@@ -1,3 +1,273 @@
 * {
   box-sizing: border-box;
+  overflow: scroll;
+}
+
+.index {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  &__header {
+    padding: 0 60px;
+    &__inner {
+      padding: 15px 0 0;
+      &__nav {
+        font-size: 14px;
+        display: flex;
+        margin-bottom: 10px;
+        &__listsLeft__left-btn {
+          padding-right: 30px;
+          text-decoration: none;
+          color: black;
+        }
+        &__listsRight {
+          margin-left: auto;
+          display: flex;
+          &__left-btn {
+            padding-right: 30px;
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+  &__main__visual {
+    width: 100%;
+    height: 560px;
+    background-image: url(/assets/bg-mainVisual-pict_pc.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    &__content {
+      padding: 60px 0 0 0;
+      &__subtitle {
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 60px;
+        line-height: 1.2;
+        color: #fff;
+      }
+      &__text {
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+        color: #fff;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+    }
+  }
+  &__main__topIntroduction {
+    padding: 60px 20px;
+    &__subtitle{
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 15px;
+    position: relative;
+    }
+    &__subtitle{
+      position: relative;
+      padding-bottom: 15px;
+      &__bottom {
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 45px;
+        }
+    }
+    &__lists {
+      display: flex;
+      padding: 60px 20px;
+      line-height: 50px;
+      &__text {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      &__description {
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 16px 0 0;
+      }
+      &__pict {
+        position: relative;
+        width: 30%;
+        margin-right: 40px;
+      
+        &__number{
+          position: absolute;
+          font-size: 30px;
+          padding: 10px 20px;
+          background-color: #3CCACE;
+          color: #fff;
+        }
+      } 
+    } 
+  }
+  &__main__topMiddleDl {
+    background-image: url(/assets/bg-topMiddleDl-pict.jpg);
+    background-position: bottom right;
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    &__inner {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      &__toptext {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__text {
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+    }
+  }
+  &__main__items {
+    display: flex;
+    padding: 60px 100px;
+    &__item {
+      text-align: center;
+      padding: 0 20px;
+      &__subtitle {
+        margin: 38px 0 10px;
+        font-size: 19px;
+        font-weight: bold;
+      }
+      &__detail {
+        margin: 0 0 40px;
+    font-size: 17px;
+    font-weight: 200;
+    text-align: left;
+      }
+    }
+  }
+  &__main__pickupContainer {
+    background-color: #f8f8f8;
+    height: 100%;
+    padding-bottom: 60px;
+    &__head {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+      padding: 80px 0 0;
+    }
+    &__headbottom {
+      color: rgb(60, 202, 206);
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    &__lists__list {
+        width: 780px;
+        margin: 26px auto;
+        display: flex;
+        justify-content: space-around;
+    }
+  }
+  &__appBanner {
+    background-image: url(/assets/bg-appBanner-pict.jpg);
+    padding: 100px 40px;
+    background-size: cover;
+    background-position: center;
+    &__inner {
+      color: #fff;
+      text-align: center;
+      &__title {
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__text {
+        font-size: 35px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+    }
+  }
+  &__footer {
+    padding: 60px 0;
+    color: #fff;
+    background-color: #272727;
+    text-align: center;
+    &__contents {
+      display: flex;
+      &__content {
+        width: calc(1 / 3 * 100%);
+        margin: 0 2% 0 0;
+      }
+    }
+  }
+}
+.form__sach {
+  width: calc(100% - 26px);
+    height: 36px;
+    padding: 0 0 0 5px;
+}
+.form-group {
+  display: flex;
+}
+.FURIMA-btn {
+  height: 47px;
+  width: 100px;
+  padding-bottom: 10px;
+  margin-right: 30px;
+}
+.follow-btn {
+  margin-bottom: 11px;
+  background-color: #3CCACE;
+  color: aliceblue;
+  font-size: 15px;
+}
+.APPstore-btn {
+  height: 45px;
+  width: 170px;
+  margin-bottom: 10px;
+}
+.Googleplay-btn {
+  height: 65px;
+  width: 170px;
+}
+.topIntroduction-leftimage {
+  width: 100%;
+}
+.topIntroduction-centerimage {
+  width: 100%;
+}
+.topIntroduction-rightimage {
+  width: 100%;
+}
+.item-image {
+  width: 100%;
+  height: 50%;
+}
+.footer__btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 32px;
+}
+.camera-btn {
+  width: 120px;
+  background: #3CCACE;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  z-index: 1;
 }
