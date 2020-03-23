@@ -4,10 +4,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # 商品出品ページ
+
+    @items = Item.new
+
   end
 
   def show
-    # 商品詳細ページ
+
   end
 end
