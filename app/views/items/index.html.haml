@@ -1,28 +1,5 @@
 .index
-  .index__camera
-    = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), root_path
-  .index__header
-    .index__header__inner
-      .index__header__inner__main
-        .index__header__inner__main__icon
-          = form_with url: "#", local: true, method: :get do |f|
-            .form-group
-              = image_tag "logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
-              = f.text_field :keyword, class: 'form__sach', placeholder: 'キーワードから探す'
-              = button_tag type: 'submit', class: "follow-btn" do
-                = icon('fa', 'search')
-      .index__header__inner__nav
-        .index__header__inner__nav__listsLeft
-          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
-            = "カテゴリ" 
-          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
-            = "ブランド" 
-        .index__header__inner__nav__listsRight
-          = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
-            = "ログイン" 
-          = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
-            = "新規会員登録"
-          .index__header__inner__nav__listsRight__right-item
+  = render "header"
   .index__main
     .index__main__visual
       .index__main__visual__content
