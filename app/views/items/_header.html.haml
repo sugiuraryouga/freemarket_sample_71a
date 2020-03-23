@@ -4,7 +4,8 @@
       .index__header__inner__main__icon
         = form_with url: "#", local: true, method: :get do |f|
           .form-group
-            = image_tag "logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
+            =link_to "/" do
+              = image_tag "logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
             = f.text_field :keyword, class: 'form__sach', placeholder: 'キーワードから探す'
             = button_tag type: 'submit', class: "follow-btn" do
               = icon('fa', 'search')
