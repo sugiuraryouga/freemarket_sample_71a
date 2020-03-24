@@ -1,0 +1,307 @@
+.new
+  .new__header
+    .new__header__inner
+      .new__header__inner__top
+        .form-group
+          = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
+        .form-seachs
+          = form_with url: "#", class: "form-sarch" , local: true, method: :get do |f|
+            = f.text_field :keyword, class: 'form__sach', placeholder: '何をお探しですか？'
+            = button_tag type: 'submit', class: "follow-btn" do
+              = icon('fa', 'search')
+      .new__header__inner__nav
+        .new__header__inner__nav__listsLeft
+          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+            = "カテゴリから探す" 
+          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+            = "ブランドから探す" 
+        .new__header__inner__nav__listsRight
+          .new__header__inner__nav__listsRight__left
+            = link_to "#" , class: "bell-btn" do
+              = icon('fa', 'bell')
+            = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+              = "お知らせ"
+          .new__header__inner__nav__listsRight__right 
+            = link_to image_tag("member_photo_noimage_thumb.png", class: "mypage-btn", alt: "サンプル画像"), root_path
+            = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+              = "マイページ"
+  .new__mask
+    .new__mask__main
+      .new__mask__main__left
+        .new__main__left__title
+          マイページメニュー
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "お知らせ"  
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "いいねした商品"
+        .new__mask__main__left__title
+          商品を出品する
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "商品を出品する"  
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "出品した商品"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "自分のショップを見る"
+        .new__mask__main__left__title
+          商品を購入する
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "購入した商品"  
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "最近見た商品"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "コメントした商品"
+        .new__mask__main__left__title
+          設定・ヘルプ・その他
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "売上・ポイント管理"  
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "クーポンの確認"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "設定"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "お問い合わせ"  
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "FURIMA公式ガイド"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "はじめての方へ"
+        .new__mask__main__left__leftform-group
+          = link_to "#", class: "left-form__btn" do
+            = "ログアウト"
+      .new__mask__main__right
+        .new__mask__main__right__top-image
+          = form_with model: @items , url: root_path, local: true, method: :get do |f|
+            .new__mask__main__right__top
+              = f.label:image, class: "form-btn__image" do
+                = icon('fas', 'camera', class: 'camera')
+                = f.file_field :image, class: 'hidden'
+              = f.label:image, class: "form-btn__image" do
+                = icon('fas', 'camera', class: 'camera')
+                = f.file_field :image, class: 'hidden'
+              = f.label:image, class: "form-btn__image" do
+                = icon('fas', 'camera', class: 'camera')
+                = f.file_field :image, class: 'hidden'
+              = f.label:image, class: "form-btn__image" do
+                = icon('fas', 'camera', class: 'camera')
+                = f.file_field :image, class: 'hidden'
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  商品名
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form
+                = f.text_field :name, class: 'Product-name', placeholder: '40文字まで'
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content
+                  商品説明
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form
+                = f.text_area :name, class: 'Product-Description', placeholder: '色・素材・重さ・定価・注意点などを記載しましょう（1000文字まで）例:先月に5,400円で購入したセーターです。着用回数は5回未満です。素材はカシミヤなので着心地がいいです。'
+            .new__mask__main__right__line
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  カテゴリ
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "指定なし（ここjs）"
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  ブランド
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "指定なし（ここjs）"
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  商品の状態
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "新品、未使用（ここjs）"
+            .new__mask__main__right__line
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  発送料の負担
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "送料込み（出品者が負担）（ここjs）"
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  発送方法
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "未定（ここjs）"
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  発送日の目安
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "支払い後、1～2日で発送（ここjs）"
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  発送元の地域
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "地域カテゴリ（ここjs）"
+            .new__mask__main__right__line
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  購入申請
+              .new__mask__main__right__form-contents__form-btn
+                = link_to "#", class: "Exhibition__btn" do
+                  = "なし（ここjs）"
+            .new__mask__main__right__form-contents__Purchase
+              = link_to "#" , class: "Purchase-btn" do
+                = icon('fa', 'question-circle')
+              = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+                = "購入申請とは"
+            .new__mask__main__right__line
+            .new__mask__main__right__form-contents
+              .new__mask__main__right__form-contents__title
+                .new__mask__main__right__form-contents__title__content 
+                  商品価格
+                .new__mask__main__right__form-contents__title__color-content 
+                  ※必須
+              .new__mask__main__right__form-contents__form-btn
+                .new__mask__main__right__form-contents__form
+                  = f.text_field :name, class: 'Product-name', placeholder: '¥300~¥2000000（js）'
+            .new__mask__main__right__form-contents__Verification
+              = f.submit '確認する', class: 'Verification-btn'
+    .new__mask__main__under-items
+      = link_to "#", class: "under-item-btn" do
+        = "フリマ"
+      = link_to "#", class: "under-item-btn" do
+        = "マイページ"
+      = link_to "#", class: "under-item-btn" do
+        = "出品する"
+.index__footer 
+  .index__footer__contents
+    .index__footer__contents__content
+      .index__footer__contents__content__head
+        注目ブランド一覧
+      .index__footer__contents__content__list
+        = link_to "#", class: "footer__btn" do
+          = "しまむら"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "GU"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "ZARA"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "Disney"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "adidas"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "NIKE"    
+    .index__footer__contents__content
+      .index__footer__contents__content__head
+        コンテンツ
+      .index__footer__contents__content__list
+        = link_to "#", class: "footer__btn" do
+          = "ブランド一覧"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "カテゴリ一覧"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "キーワード一覧"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "ランキング"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "買取・相場価格情報"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "人気商品チャンネル"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "トレンド商品特集"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "イベント・キャンペーン"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "ラクマラボ"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "ネイルデザインブック"    
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "ラクマ公式中古スマホショップ" 
+    .index__footer__contents__content
+      .index__footer__contents__content__head
+        ガイド
+      .index__footer__contents__content__list
+        = link_to "#", class: "footer__btn" do
+          = "フリマ公式ガイド"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "はじめての方へ"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "お知らせ"
+      .index__footer__contents__content__head
+        フリマについて
+      .index__footer__contents__content__list
+        = link_to "#", class: "footer__btn" do
+          = "会社概要"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "プライバシーポリシー"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "利用規約"
+      .index__footer__contents__content__list
+        = link_to "#", class: "footer__btn" do
+          = "特定商取引法に基づく表記"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "古物営業法に基づく表記"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "採用情報"
+      .index__footer__contents__content__list 
+        = link_to "#", class: "footer__btn" do
+          = "お問い合わせ"
+
+
+
+              
+      
