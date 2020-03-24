@@ -1,0 +1,18 @@
+.header
+  .header__logo
+    = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
+.contents
+  .contents__message
+    新規登録画面
+  = link_to new_user_registration_path,class: "contents__btn contents__btn--mailaddress" do
+    = icon('far', 'envelope',  class: "contents__btn__icon")
+    %span<>
+      mailaddress
+  = link_to "#", class: "contents__btn contents__btn--facebook" do
+    = icon('fab', 'facebook-square',  class: "contents__btn__icon")
+    %span<>
+      Facebook
+  = link_to "#", class: "contents__btn contents__btn--Google" do
+    = icon('fab', 'google', class: "contents__btn__icon")
+    %span<>
+      Google
