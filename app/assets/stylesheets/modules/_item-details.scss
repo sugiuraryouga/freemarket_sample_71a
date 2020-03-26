@@ -52,28 +52,15 @@
                     height: 87px;
                     width: 140px;
                     vertical-align: bottom;
+                    &__dummy{
+                      object-fit: cover;
+                      height: 87px;
+                      width: 140px;
+                      vertical-align: bottom;
+                    }
                   }
                 }
-                &__li2{
-                  width: 25%;
-                  margin: 0 10px 0 0; 
-                  &__image{
-                    object-fit: cover;
-                    height: 87px;
-                    width: 140px;
-                    vertical-align: bottom;
-                  }
-                }
-                &__li3{
-                  width: 25%;
-                  margin: 0 10px 0 0;
-                  &__image{
-                    object-fit: cover;
-                    height: 87px;
-                    width: 140px;
-                    vertical-align: bottom;
-                  }
-                }
+           
               }
             }
           }
@@ -249,6 +236,17 @@
                 margin-right:10px;
               }          
             }
+          }
+        }
+        &__option{
+          text-decoration: none;
+          color: #3CCACE;
+        }
+        &__delete{
+          text-decoration: none;
+          color: #3CCACE;
+          &__word{
+            text-align: right;
           }
         }
       }

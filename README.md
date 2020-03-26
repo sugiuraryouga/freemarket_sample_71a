@@ -92,7 +92,7 @@ belongs_to :user
 |------|----|-------|
 |condition|integer|null: false|
 ### Association
-- belongs_to :item
+- has_many :items
 
 ## item_imagesテーブル
 |Column|Type|Options|

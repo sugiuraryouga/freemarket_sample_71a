@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_102200) do
+ActiveRecord::Schema.define(version: 2020_03_25_095238) do
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image_url", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_id", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_102200) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id_id", null: false
+    t.bigint "category_id", null: false
     t.string "name", null: false
     t.string "text", null: false
     t.integer "price", null: false
@@ -29,7 +29,15 @@ ActiveRecord::Schema.define(version: 2020_03_24_102200) do
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_items_on_category_id_id"
+    t.bigint "user_id", null: false
+    t.bigint "size_id", null: false
+    t.bigint "item_condition_id", null: false
+    t.bigint "delivery_charge_id", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["delivery_charge_id"], name: "index_items_on_delivery_charge_id"
+    t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
+    t.index ["size_id"], name: "index_items_on_size_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
