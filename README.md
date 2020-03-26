@@ -47,7 +47,7 @@ belongs_to :user
 |city|string|null: false|
 |adress1|string|null: false|
 |adress2|string||	
-|telephone|string|unique: true|
+
 ### Association
 - belongs_to :user
 
@@ -92,7 +92,7 @@ belongs_to :user
 |------|----|-------|
 |condition|integer|null: false|
 ### Association
-- belongs_to :item
+- has_many :items
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -105,9 +105,18 @@ belongs_to :user
 ## delivery_chargeテーブル
 |Column|type|Option|
 |------|----|-------|
-|price|integer|null: false|
+|price|string|null: false|
+<!-- 送料込み、送料購入者負担など -->
 ### Association
 - belongs_to :item
+
+# delivery_spendテーブル
+|Column|type|Option|
+|------|----|-------|
+|spend|string|null: false|
+<!-- 3~4日で発送など -->
+### Association
+- has_many :items
 
 ## categoriesテーブル
 |Column|type|Option|

@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_items,only:[:show]
+
   def index
 
     
@@ -37,15 +39,18 @@ end
     @category=@item.category
     @children=@category.parent
     @parentcategory=@category.parent
-
-
+    @images = @item.item_images
+    @image = @images.first
+    # @comment = Comment.new
+    # @comments = @product.comments.includes(:user)
   end
 
   private
 
-  def item_params
-    params.require(:item).permit(:name, :text)
-  end
 
+  def set_items
+    @item = Item.find(params[:id])
+
+  end
 
 end
