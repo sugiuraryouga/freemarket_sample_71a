@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_062745) do
+ActiveRecord::Schema.define(version: 2020_03_27_072648) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -18,7 +24,31 @@ ActiveRecord::Schema.define(version: 2020_03_26_062745) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-ActiveRecord::Schema.define(version: 2020_03_25_095238) do
+  end
+
+  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "condition", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveryaddres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "prefecture", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deliverycharges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveryspends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "spend", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -38,15 +68,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_095238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.bigint "user_id", null: false
-    t.bigint "size_id", null: false
-    t.bigint "item_condition_id", null: false
-    t.bigint "delivery_charge_id", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["delivery_charge_id"], name: "index_items_on_delivery_charge_id"
-    t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
-    t.index ["size_id"], name: "index_items_on_size_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

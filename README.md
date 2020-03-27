@@ -13,6 +13,7 @@
 - has_one :credit_card, dependent: :destroy
 - has_one :profile, dependent: :destroy
 
+
 ## ordersテーブル
 |Column|Type|Options|
 |buyer_id|references|null: false, FK: true|
@@ -20,6 +21,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
 
 ## profilesテーブル
 |Column|Type|Options|
@@ -86,6 +88,10 @@ belongs_to :user
 - has_many :likes dependent: :destroy
 - has_many :comments dependent: :destroy
 - has_many :item_images dependent: :destroy
+- belongs_to :conditions
+- belongs_to :Delivery_addres
+- belongs_to :Brands
+
 
 ### item_conditionテーブル
 |Column|Type|Options|
@@ -108,9 +114,9 @@ belongs_to :user
 |price|string|null: false|
 <!-- 送料込み、送料購入者負担など -->
 ### Association
-- belongs_to :item
+- has_many :items
 
-# delivery_spendテーブル
+# deliveryspendテーブル
 |Column|type|Option|
 |------|----|-------|
 |spend|string|null: false|
@@ -127,7 +133,8 @@ belongs_to :user
 - has_many :items
 - has ancestry
 
-## sizesテーブル
+## sizeテーブル
+<!-- S、M、Lなど -->
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
@@ -143,3 +150,25 @@ belongs_to :user
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to:user
+追記↓
+## conditionテーブル
+<!-- 新品、未使用など -->
+|Column|Type|Options|
+|condition|string|null:false, unique: true|
+### Association
+- has_many:item
+
+## Deliveryaddresテーブル
+<!-- 都道府県 -->
+|Column|Type|Options|
+|prefecture|string|null:false|
+### Association
+- has_many:item
+
+## Brandsテーブル
+<!-- しまむら、ユニクロなど -->
+|Column|Type|Options|
+|name|string|null:false|
+### Association
+- has_many:item
+
