@@ -69,7 +69,6 @@ $(function(){
   });
   // 子カテゴリー選択後のイベント
   $(document).on('change', '#child_category', function(){
-    console.log("ok")
     var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
