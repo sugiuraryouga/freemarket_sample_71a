@@ -32,10 +32,10 @@
          - @images.each.with_index do |image, index|
           - if image.present?
            %li.index__main__item__content__top__body__ul__ul__li1
-            =image_tag image.image,class:"index__main__item__content__top__body__ul__ul__li1__image"
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
           - else
            %li.index__main__item__content__top__body__ul__ul__li1
-            =image_tag image.image,class:"index__main__item__content__top__body__ul__ul__li1__image"
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
          - if @images.length > 5
           - for i in 1..(10 - @images.length)
            .index__main__item__content__top__body__ul__ul__li1__image__dummy
@@ -82,9 +82,6 @@
 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th ブランド
-        %td.index__main__item__content__table__table__tbody__tr__td 
-       %tr.index__main__item__content__table__table__tbody__tr
-        %th.index__main__item__content__table__table__tbody__tr__th 商品のサイズ
         %td.index__main__item__content__table__table__tbody__tr__td 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th 商品の状態

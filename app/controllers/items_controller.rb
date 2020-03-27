@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
     
   end
+
   
     def new
       @items = Item.new
@@ -36,6 +37,7 @@ class ItemsController < ApplicationController
       end
 
     end
+
   
     # 以下全て、formatはjsonのみ
      # 親カテゴリーが選択された後に動くアクション
@@ -51,6 +53,7 @@ class ItemsController < ApplicationController
  end
 
  def create
+  binding.pry
   Item.create(message_params)
   redirect_to root_path
 end
