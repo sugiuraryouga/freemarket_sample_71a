@@ -8,6 +8,7 @@
       padding: 0 60px;
       height: 55px;
       line-height: 55px;
+      display: flex;
     }
     &__item{
       &__content{
@@ -59,8 +60,7 @@
                       vertical-align: bottom;
                     }
                   }
-                }
-           
+                }          
               }
             }
           }
@@ -296,19 +296,35 @@
     }
 }
 
-  
-
-
-
-
-
 .index__main__item__content__table__table__tbody__tr__td__a{
           text-decoration: none;
           color: #3CCACE;
   }
-  
-  .fa{
 
+.index__main__item__content__table__table__tbody__tr__td__a{
+        text-decoration: none;
+        color: #3CCACE;
+        padding-right: 12px;
+}
+
+.fa{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.footer__btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 32px;
+}
+ul {
+  list-style: none;
+}
+
+.fa{
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;

@@ -4,12 +4,25 @@
  = render "header"
  .index__main
   .index__main__categories
+   =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+    =@children.parent.name
+    %br
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+     =@category.parent.name
+    %br
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+     =@category.name
+  -#  =@parentcategory.name
    -#  @category
-   grandcategory ＞ mothercategory ＞ category
+ .index__category
+ 
+   
+
   .index__main__item
    .index__main__item__content
     .index__main__item__content__top
      %h2.index__main__item__content__top__h2 
+
       = @item.name
      .index__main__item__content__top__body
       %ul.index__main__item__content__top__body__ul
@@ -31,6 +44,7 @@
      .index__main__item__content__price__detail
       %spam.index__main__item__content__price__detail___tax (税込)
       %spam.index__main__item__content__price__detail___deliver 送料込み 
+
     -if user_signed_in?
      -if @item.user_id == current_user.id
       = link_to "#" ,class:"index__main__item__content__option" do
@@ -44,6 +58,7 @@
         .product-buy-btn 購入画面に進む
       -else
        .product-buy-btn-sold 売り切れました
+
  
     .index__main__item__content__detail
      親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
@@ -56,11 +71,15 @@
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th カテゴリー
         %td.index__main__item__content__table__table__tbody__tr__td 
-         =link_to "ベビーキッズ","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@children.parent.name
          %br
-         =link_to "ベビー服","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@category.parent.name
          %br
-         =link_to "アウター","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@category.name
+
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th ブランド
         %td.index__main__item__content__table__table__tbody__tr__td 
@@ -126,6 +145,7 @@
     =image_tag "5a902db97f96951c82922874.png",class:"index__showbarnner__inner__icon__a__image"
    =link_to "#" ,class:"index__showbarnner__inner__icon__a2" do
     =image_tag "google-play-badge.png",class:"index__showbarnner__inner__icon__a2__image"
+
 = render "footer"
  
 
