@@ -49,11 +49,8 @@ $(function(){
         $('#brand_wrapper').remove();
         var insertHTML = '';
         
-        children.forEach(function(child){
-          
-          insertHTML += appendOption(child);
-          // console.log(insertHTML)
-         
+        children.forEach(function(child){   
+          insertHTML += appendOption(child);     
         });
         appendChidrenBox(insertHTML);
       })
