@@ -83,7 +83,7 @@
             = "ログアウト"
       .new__mask__main__right
         .new__mask__main__right__top-image
-          = form_with model: @items , url: "#", local: true, method: :get do |f|
+          = form_with model: @item , url: "#", local: true, method: :get do |f|
             .new__mask__main__right__top
               = f.label:image, class: "form-btn__image" do
                 = icon('fas', 'camera', class: 'camera')

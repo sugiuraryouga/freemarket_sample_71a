@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
  end
 
  def create
+  binding.pry
   Item.create(message_params)
   redirect_to root_path
 end
