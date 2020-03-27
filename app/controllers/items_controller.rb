@@ -14,17 +14,10 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+  end
   
-    def new
-      @items = Item.new
-      #セレクトボックスの初期値設定
-      @category_parent_array = ["---"]
-      #データベースから、親カテゴリーのみ抽出し、配列化
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
       
-    end
+
   
     # 以下全て、formatはjsonのみ
      # 親カテゴリーが選択された後に動くアクション
