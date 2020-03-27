@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_27_072648) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -19,8 +18,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_072648) do
     t.datetime "updated_at", null: false
   end
 
-ActiveRecord::Schema.define(version: 2020_03_27_064418) do
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -28,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_064418) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
-
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
@@ -54,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_064418) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.datetime "created_at", null: false
@@ -72,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_064418) do
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.bigint "user_id", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
