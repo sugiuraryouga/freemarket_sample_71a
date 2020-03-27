@@ -5,15 +5,6 @@ class ItemsController < ApplicationController
 
     
   end
-
-  def new
-    @items = Item.new
-    #セレクトボックスの初期値設定
-    @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
   
     def new
       @items = Item.new
@@ -23,7 +14,27 @@ class ItemsController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
       end
-      
+      @brandcategory = ["---"]
+      Brand.all.each do |brand|
+        @brandcategory << brand.name
+      end
+      @condition = ["---"]
+      Condition.all.each do |condition|
+        @condition << condition.condition
+      end
+      @deliverycharge = ["---"]
+      Deliverycharge.all.each do |deliverycharge|
+        @deliverycharge << deliverycharge.price
+      end
+      @deliveryspend = ["---"]
+      Deliveryspend.all.each do |deliveryspend|
+        @deliveryspend << deliveryspend.spend
+      end
+      @deliveryaddres = ["---"]
+      Deliveryaddre.all.each do |deliveryaddres|
+        @deliveryaddres << deliveryaddres.prefecture
+      end
+
     end
   
     # 以下全て、formatはjsonのみ

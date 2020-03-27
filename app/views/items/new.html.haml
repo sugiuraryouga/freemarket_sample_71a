@@ -130,8 +130,7 @@
                 .new__mask__main__right__form-contents__title__content 
                   ブランド
               .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "指定なし（ここjs）"
+                = f.select :name , @brandcategory,{}, {class: "Exhibition__btn"} 
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -139,8 +138,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "新品、未使用（ここjs）"
+                = f.select :condition , @condition ,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__line
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
@@ -149,15 +147,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "送料込み（出品者が負担）（ここjs）"
-            .new__mask__main__right__form-contents
-              .new__mask__main__right__form-contents__title
-                .new__mask__main__right__form-contents__title__content 
-                  発送方法
-              .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "未定（ここjs）"
+                = f.select :deliverycharge , @deliverycharge ,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -165,8 +155,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "支払い後、1～2日で発送（ここjs）"
+                = f.select :spend , @deliveryspend ,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -174,21 +163,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "地域カテゴリ（ここjs）"
-            .new__mask__main__right__line
-            .new__mask__main__right__form-contents
-              .new__mask__main__right__form-contents__title
-                .new__mask__main__right__form-contents__title__content 
-                  購入申請
-              .new__mask__main__right__form-contents__form-btn
-                = link_to "#", class: "Exhibition__btn" do
-                  = "なし（ここjs）"
-            .new__mask__main__right__form-contents__Purchase
-              = link_to "#" , class: "Purchase-btn" do
-                = icon('fa', 'question-circle')
-              = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
-                = "購入申請とは"
+                = f.select :prefecture , @deliveryaddres ,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__line
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
