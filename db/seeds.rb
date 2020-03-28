@@ -43,123 +43,77 @@
 # lady_legwear.children.create([{:name=>"ソックス"}, {:name=>"タイツ/ストッキング"}, {:name=>"レギンス/スパッツ"}])
 # lady_wig_extension.children.create([{:name=>"ロングストレート"}, {:name=>"ロングカール"}, {:name=>"ショートストレート"}])
 # conditions
-Condition.create!(
-  [ 
-   {condition: '新品、未使用'},
-   {condition: '未使用に近い'},
-   {condition: '目立った傷や汚れなし'},
-   {condition: 'やや傷や汚れあり'},
-   {condition: '傷や汚れあり'},
-   {condition: '全体的に状態が悪い'}
-  ]
- )
-  Deliveryaddre.create!(
-    [
-      {prefecture: '北海道'},
-      {prefecture: '青森県'},
-      {prefecture: '岩手県'},
-      {prefecture: '宮城県'},
-      {prefecture: '秋田県'},
-      {prefecture: '山形県'},
-      {prefecture: '福島県'},
-      {prefecture: '茨城県'},
-      {prefecture: '栃木県'},
-      {prefecture: '群馬県'},
-      {prefecture: '埼玉県'},
-      {prefecture: '千葉県'},
-      {prefecture: '東京都'},
-      {prefecture: '神奈川県'},
-      {prefecture: '山梨県'},
-      {prefecture: '長野県'},
-      {prefecture: '新潟県'},
-      {prefecture: '富山県'},
-      {prefecture: '石川県'},
-      {prefecture: '福井県'},
-      {prefecture: '岐阜県'},
-      {prefecture: '静岡県'},
-      {prefecture: '愛知県'},
-      {prefecture: '三重県'},
-      {prefecture: '滋賀県'},
-      {prefecture: '京都府'},
-      {prefecture: '大阪府'},
-      {prefecture: '兵庫県'},
-      {prefecture: '奈良県'},
-      {prefecture: '和歌山県'},
-      {prefecture: '鳥取県'},
-      {prefecture: '島根県'},
-      {prefecture: '岡山県'},
-      {prefecture: '広島県'},
-      {prefecture: '山口県'},
-      {prefecture: '徳島県'},
-      {prefecture: '香川県'},
-      {prefecture: '愛媛県'},
-      {prefecture: '高知県'},
-      {prefecture: '福岡県'},
-      {prefecture: '佐賀県'},
-      {prefecture: '長崎県'},
-      {prefecture: '熊本県'},
-      {prefecture: '大分県'},
-      {prefecture: '宮崎県'},
-      {prefecture: '鹿児島県'},
-      {prefecture: '沖縄県'},
-    ]
-  )
-#  Deliveryaddres.create( prefecture: '北海道' )
-#  Deliveryaddres.create( prefecture: '青森県' )
-#  Deliveryaddres.create( prefecture: '岩手県' )
-#  Deliveryaddres.create( prefecture: '宮城県' )
-#  Deliveryaddres.create( prefecture: '秋田県' )
-#  Deliveryaddres.create( prefecture: '山形県' )
-#  Deliveryaddres.create( prefecture: '福島県' )
-#  Deliveryaddres.create( prefecture: '茨城県' )
-#  Deliveryaddres.create( prefecture: '栃木県' )
-#  Deliveryaddres.create( prefecture: '群馬県' )
-#  Deliveryaddres.create( prefecture: '埼玉県' )
-#  Deliveryaddres.create( prefecture: '千葉県' )
-#  Deliveryaddres.create( prefecture: '東京都' )
-#  Deliveryaddres.create( prefecture: '神奈川県' )
-#  Deliveryaddres.create( prefecture: '山梨県' )
-#  Deliveryaddres.create( prefecture: '長野県' )
-#  Deliveryaddres.create( prefecture: '新潟県' )
-#  Deliveryaddres.create( prefecture: '富山県' )
-#  Deliveryaddres.create( prefecture: '石川県' )
-#  Deliveryaddres.create( prefecture: '福井県' )
-#  Deliveryaddres.create( prefecture: '岐阜県' )
-#  Deliveryaddres.create( prefecture: '静岡県' )
-#  Deliveryaddres.create( prefecture: '愛知県' )
-#  Deliveryaddres.create( prefecture: '三重県' )
-#  Deliveryaddres.create( prefecture: '滋賀県' )
-#  Deliveryaddres.create( prefecture: '京都府' )
-#  Deliveryaddres.create( prefecture: '大阪府' )
-#  Deliveryaddres.create( prefecture: '兵庫県' )
-#  Deliveryaddres.create( prefecture: '奈良県' )
-#  Deliveryaddres.create( prefecture: '和歌山県' )
-#  Deliveryaddres.create( prefecture: '鳥取県' )
-#  Deliveryaddres.create( prefecture: '島根県' )
-#  Deliveryaddres.create( prefecture: '岡山県' )
-#  Deliveryaddres.create( prefecture: '広島県' )
-#  Deliveryaddres.create( prefecture: '山口県' )
-#  Deliveryaddres.create( prefecture: '徳島県' )
-#  Deliveryaddres.create( prefecture: '香川県' )
-#  Deliveryaddres.create( prefecture: '愛媛県' )
-#  Deliveryaddres.create( prefecture: '高知県' )
-#  Deliveryaddres.create( prefecture: '福岡県' )
-#  Deliveryaddres.create( prefecture: '佐賀県' )
-#  Deliveryaddres.create( prefecture: '長崎県' )
-#  Deliveryaddres.create( prefecture: '熊本県' )
-#  Deliveryaddres.create( prefecture: '大分県' )
-#  Deliveryaddres.create( prefecture: '宮崎県' )
-#  Deliveryaddres.create( prefecture: '鹿児島県' )
-#  Deliveryaddres.create( prefecture: '沖縄県' )
+# Condition.create!(
+#   [ 
+#    {condition: '新品、未使用'},
+#    {condition: '未使用に近い'},
+#    {condition: '目立った傷や汚れなし'},
+#    {condition: 'やや傷や汚れあり'},
+#    {condition: '傷や汚れあり'},
+#    {condition: '全体的に状態が悪い'}
+#   ]
+#  )
+#   Deliveryaddres.create!(
+#     [
+#       {prefecture: '北海道'},
+#       {prefecture: '青森県'},
+#       {prefecture: '岩手県'},
+#       {prefecture: '宮城県'},
+#       {prefecture: '秋田県'},
+#       {prefecture: '山形県'},
+#       {prefecture: '福島県'},
+#       {prefecture: '茨城県'},
+#       {prefecture: '栃木県'},
+#       {prefecture: '群馬県'},
+#       {prefecture: '埼玉県'},
+#       {prefecture: '千葉県'},
+#       {prefecture: '東京都'},
+#       {prefecture: '神奈川県'},
+#       {prefecture: '山梨県'},
+#       {prefecture: '長野県'},
+#       {prefecture: '新潟県'},
+#       {prefecture: '富山県'},
+#       {prefecture: '石川県'},
+#       {prefecture: '福井県'},
+#       {prefecture: '岐阜県'},
+#       {prefecture: '静岡県'},
+#       {prefecture: '愛知県'},
+#       {prefecture: '三重県'},
+#       {prefecture: '滋賀県'},
+#       {prefecture: '京都府'},
+#       {prefecture: '大阪府'},
+#       {prefecture: '兵庫県'},
+#       {prefecture: '奈良県'},
+#       {prefecture: '和歌山県'},
+#       {prefecture: '鳥取県'},
+#       {prefecture: '島根県'},
+#       {prefecture: '岡山県'},
+#       {prefecture: '広島県'},
+#       {prefecture: '山口県'},
+#       {prefecture: '徳島県'},
+#       {prefecture: '香川県'},
+#       {prefecture: '愛媛県'},
+#       {prefecture: '高知県'},
+#       {prefecture: '福岡県'},
+#       {prefecture: '佐賀県'},
+#       {prefecture: '長崎県'},
+#       {prefecture: '熊本県'},
+#       {prefecture: '大分県'},
+#       {prefecture: '宮崎県'},
+#       {prefecture: '鹿児島県'},
+#       {prefecture: '沖縄県'},
+#     ]
+#   )
 
-#  DeliveryDate.create!(
+
+#  Deliveryspend.create!(
 #   [
-#   {date: '指定なし'},
-#   {date: '１〜２日で発送'},
-#   {date: '２〜３日で発送'},
-#   {date: '４〜7日で発送'},
-#   {date: '発送は週末のみ'},
-#   {date: '発送は平日のみ'}
+#   {spend: '指定なし'},
+#   {spend: '１〜２日で発送'},
+#   {spend: '２〜３日で発送'},
+#   {spend: '４〜7日で発送'},
+#   {spend: '発送は週末のみ'},
+#   {spend: '発送は平日のみ'}
 #   ]
 # )
 # Deliveryspend.create!(
