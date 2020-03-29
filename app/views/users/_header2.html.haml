@@ -1,0 +1,26 @@
+.new__header
+  .new__header__inner
+    .new__header__inner__top
+      .form-group
+        = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
+      .form-seachs
+        = form_with url: "#", class: "form-sarch" , local: true, method: :get do |f|
+          = f.text_field :keyword, class: 'form__sach', placeholder: '何をお探しですか？'
+          = button_tag type: 'submit', class: "follow-btn" do
+            = icon('fa', 'search')
+    .new__header__inner__nav
+      .new__header__inner__nav__listsLeft
+        = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+          = "カテゴリから探す" 
+        = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+          = "ブランドから探す" 
+      .new__header__inner__nav__listsRight
+        .new__header__inner__nav__listsRight__left
+          = link_to "#" , class: "bell-btn" do
+            = icon('fa', 'bell')
+          = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+            = "お知らせ"
+        .new__header__inner__nav__listsRight__right 
+          = link_to image_tag("member_photo_noimage_thumb.png", class: "mypage-btn", alt: "サンプル画像"), root_path
+          = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+            = "マイページ"
