@@ -16,7 +16,7 @@
 
 ## ordersテーブル
 |Column|Type|Options|
-|buyer_id|references|null: false, FK: true|
+|user_id|references|null: false, FK: true|
 |item_id|references|null: false, FK: true|
 ### Association
 - belongs_to :user

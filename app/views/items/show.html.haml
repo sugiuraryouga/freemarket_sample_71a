@@ -21,6 +21,32 @@
     .index__main__item__content__top
      %h2.index__main__item__content__top__h2 
 
+  .index__main__item__information
+   -if @Grandparent.has_parent?
+   -else
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+     =@Grandparent.name
+     -if @category.has_parent?
+      =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+       =@category.parent.name
+       -if @category.has_parent?
+        =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+         =@category.name
+   -#  %br
+   -#  =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+   -#   =@category.parent.name
+   -#  %br
+   -#  =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+   -#   =@category.name
+  
+ .index__category
+ 
+   
+
+  .index__main__item
+   .index__main__item__content
+    .index__main__item__content__top
+     %h2.index__main__item__content__top__h2 
       = @item.name
      .index__main__item__content__top__body
       %ul.index__main__item__content__top__body__ul
@@ -38,7 +64,8 @@
           - for i in 1..(10 - @images.length)
            .index__main__item__content__top__body__ul__ul__li1__image__dummy
     .index__main__item__content__price 
-     %span.index__main__item__content__price__en ¥30000
+     %span.index__main__item__content__price__en
+      = @item.price 
      .index__main__item__content__price__detail
       %spam.index__main__item__content__price__detail___tax (税込)
       %spam.index__main__item__content__price__detail___deliver 送料込み 
@@ -50,12 +77,12 @@
        .index__main__item__content__option__stop 出品を一旦停止する
       = link_to "#",class:"index__main__item__content__delete", method: :delete, data: { turbolinks: false} do
        .index__main__item__content__delete__word この商品を削除する   
-     -else 
-      -if @product.status == 0
-       = link_to "#", data: {turbolinks: false} do
-        .product-buy-btn 購入画面に進む
-      -else
-       .product-buy-btn-sold 売り切れました
+    -#  -else 
+    -#   -if @product.status == 0
+    -#    = link_to "#", data: {turbolinks: false} do
+    -#     .product-buy-btn 購入画面に進む
+    -#   -else
+    -#    .product-buy-btn-sold 売り切れました
 
  
     .index__main__item__content__detail
@@ -69,17 +96,24 @@
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th カテゴリー
         %td.index__main__item__content__table__table__tbody__tr__td 
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@children.parent.name
+         -if @Grandparent.has_parent?
+         -else
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@children.parent.name
          %br
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@category.parent.name
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.parent.name
          %br
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@category.name
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.name
 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th ブランド
+        %td.index__main__item__content__table__table__tbody__tr__td 
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 商品のサイズ
         %td.index__main__item__content__table__table__tbody__tr__td 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th 商品の状態
@@ -115,6 +149,9 @@
       %button.index__main__item__content__commentarea__form__submit
        %icon.fa.fa-comment
        コメントする
+    .index__main__item__content__commentarea__form__submit__link-Purchase
+     = link_to order_path(@item), class: "main-Purchase-btn" do
+      = "購入する"
     %ul.index__main__item__content__ul
      %li.index__main__item__content__ul__li
       =link_to "#" ,class:"index__main__item__content__ul__li__a" do
