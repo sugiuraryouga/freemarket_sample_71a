@@ -9,12 +9,12 @@ class ItemsController < ApplicationController
   
     def new
       @item = Item.new
-      # 4.times{@item.item_images.build}
+    
       @images=@item.item_images.build
     end
 
   
-    # 以下全て、formatはjsonのみ
+
      # 親カテゴリーが選択された後に動くアクション
    def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
@@ -45,8 +45,7 @@ end
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
-    # @comment = Comment.new
-    # @comments = @product.comments.includes(:user)
+    
   end
 
   private
