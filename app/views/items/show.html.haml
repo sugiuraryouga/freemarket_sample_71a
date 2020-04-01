@@ -1,9 +1,146 @@
 .index
+ .index__camera
+  = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), root_path
  = render "header"
  .index__main
   .index__main__categories
-  .index__main__item
-  .index__main__item__information
+   =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+    =@children.parent.name
+    %br
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+     =@category.parent.name
+    %br
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+     =@category.name
+ .index__category
+ 
+   
 
-  
- = render "footer"
+  .index__main__item
+   .index__main__item__content
+    .index__main__item__content__top
+     %h2.index__main__item__content__top__h2 
+
+      = @item.name
+     .index__main__item__content__top__body
+      %ul.index__main__item__content__top__body__ul
+       %li.index__main__item__content__top__body__ul__li
+        =image_tag @image.image.to_s,class: "index__main__item__content__top__body__ul__li__image"
+        %ul.index__main__item__content__top__body__ul__ul
+         - @images.each.with_index do |image, index|
+          - if image.present?
+           %li.index__main__item__content__top__body__ul__ul__li1
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
+          - else
+           %li.index__main__item__content__top__body__ul__ul__li1
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
+         - if @images.length > 5
+          - for i in 1..(10 - @images.length)
+           .index__main__item__content__top__body__ul__ul__li1__image__dummy
+    .index__main__item__content__price 
+     %span.index__main__item__content__price__en ¥30000
+     .index__main__item__content__price__detail
+      %spam.index__main__item__content__price__detail___tax (税込)
+      %spam.index__main__item__content__price__detail___deliver 送料込み 
+
+    -if user_signed_in?
+     -if @item.user_id == current_user.id
+      = link_to "#" ,class:"index__main__item__content__option" do
+       .index__main__item__content__option__edit 商品の編集
+       .index__main__item__content__option__stop 出品を一旦停止する
+      = link_to "#",class:"index__main__item__content__delete", method: :delete, data: { turbolinks: false} do
+       .index__main__item__content__delete__word この商品を削除する   
+     -else 
+      -if @product.status == 0
+       = link_to "#", data: {turbolinks: false} do
+        .product-buy-btn 購入画面に進む
+      -else
+       .product-buy-btn-sold 売り切れました
+
+ 
+    .index__main__item__content__detail
+     親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+    .index__main__item__content__table
+     %table.index__main__item__content__table__table
+      %tbody.index__main__item__content__table__table__tbody
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 出品者
+        %td.index__main__item__content__table__table__tbody__tr__td hoge
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th カテゴリー
+        %td.index__main__item__content__table__table__tbody__tr__td 
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@children.parent.name
+         %br
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@category.parent.name
+         %br
+         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+          =@category.name
+
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th ブランド
+        %td.index__main__item__content__table__table__tbody__tr__td 
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 商品の状態
+        %td.index__main__item__content__table__table__tbody__tr__td 未使用に近い
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 配送料の負担
+        %td.index__main__item__content__table__table__tbody__tr__td 送料込み（出品者負担）
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 発送元の地域
+        %td.index__main__item__content__table__table__tbody__tr__td 岩手県
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 発送日の目安
+        %td.index__main__item__content__table__table__tbody__tr__td ４〜７日で発送
+    .index__main__item__content__option
+     %ul.index__main__item__content__option__ul
+      %li.index__main__item__content__option__ul__li
+       %icon.fa.fa-star
+       お気に入り 0
+     %ul.index__main__item__content__option__ul2
+      %li.index__main__item__content__option__ul2__li
+       =link_to "#" ,class: "index__main__item__content__option__ul2__li__a"do
+        %icon.fa.fa-flag
+        不適切な商品の通報
+    .index__main__item__content__commentarea
+     .index__main__item__content__commentarea__ul
+     = form_with url: "#", class:"index__main__item__content__commentarea__form",local: true, method: :get do |f|
+      = f.text_area :text, class:"index__main__item__content__commentarea__form__textarea" 
+      %p.index__main__item__content__commentarea__form__p
+       相手のことを考え丁寧なコメントを心がけましょう。
+       %br
+       不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %br
+      %button.index__main__item__content__commentarea__form__submit
+       %icon.fa.fa-comment
+       コメントする
+    %ul.index__main__item__content__ul
+     %li.index__main__item__content__ul__li
+      =link_to "#" ,class:"index__main__item__content__ul__li__a" do
+       %icon.fa.fa-angle-left
+       %span
+        前の商品
+     %li.index__main__item__content__ul__li2
+      =link_to "#" ,class:"index__main__item__content__ul__li2__a" do
+       %span
+        後ろの商品
+       %icon.fa.fa-angle-right
+    .index__main__item__content__relateditem
+     =link_to "#" ,class:"index__main__item__content__relateditem__a" do
+      このカテゴリーをもっとみる
+%aside.index__showbarnner
+ .index__showbarnner__inner
+  %h2.index__showbarnner__inner__title
+   だれでもかんたん、人生を変えるフリマアプリ
+  %p.index__showbarnner__inner__text
+   今すぐ無料ダウンロード！
+  %icon.index__showbarnner__inner__icon
+   =link_to "#" ,class:"index__showbarnner__inner__icon__a" do
+    =image_tag "5a902db97f96951c82922874.png",class:"index__showbarnner__inner__icon__a__image"
+   =link_to "#" ,class:"index__showbarnner__inner__icon__a2" do
+    =image_tag "google-play-badge.png",class:"index__showbarnner__inner__icon__a2__image"
+
+= render "footer"
+ 
+
