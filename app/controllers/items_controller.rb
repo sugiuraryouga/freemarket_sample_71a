@@ -8,42 +8,17 @@ class ItemsController < ApplicationController
 
   
     def new
-      @items = Item.new
-      #セレクトボックスの初期値設定
-      @category_parent_array = ["---"]
-      #データベースから、親カテゴリーのみ抽出し、配列化
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
-      @brandcategory = ["---"]
-      Brand.all.each do |brand|
-        @brandcategory << brand.name
-      end
-      @condition = ["---"]
-      Condition.all.each do |condition|
-        @condition << condition.condition
-      end
-      @deliverycharge = ["---"]
-      Deliverycharge.all.each do |deliverycharge|
-        @deliverycharge << deliverycharge.price
-      end
-      @deliveryspend = ["---"]
-      Deliveryspend.all.each do |deliveryspend|
-        @deliveryspend << deliveryspend.spend
-      end
-      @deliveryaddres = ["---"]
-      Deliveryaddre.all.each do |deliveryaddres|
-        @deliveryaddres << deliveryaddres.prefecture
-      end
-
+      @item = Item.new
+    
+      @images=@item.item_images.build
     end
 
   
-    # 以下全て、formatはjsonのみ
+
      # 親カテゴリーが選択された後に動くアクション
    def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(id: "#{params[:id]}", ancestry: nil).children
  end
 
   # 子カテゴリーが選択された後に動くアクション
@@ -53,9 +28,14 @@ class ItemsController < ApplicationController
  end
 
  def create
-  binding.pry
-  Item.create(message_params)
-  redirect_to root_path
+  @item = Item.new(item_params)
+  if @item.save
+    redirect_to controller: :items, action: :index
+  else
+    flash[:alert] = '必須事項を入力してください。'
+    redirect_to controller: :items, action: :new
+
+  end
 end
 
   def show
@@ -65,8 +45,7 @@ end
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
-    # @comment = Comment.new
-    # @comments = @product.comments.includes(:user)
+    
   end
 
   private
@@ -75,6 +54,10 @@ end
   def set_items
     @item = Item.find(params[:id])
 
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :text, :category_id, :price, :condition_id,:brand_id,  :deliverycharge_id,:deliveryaddres_id,  :deliveryspend_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end
