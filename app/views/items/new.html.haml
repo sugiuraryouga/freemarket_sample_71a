@@ -83,20 +83,24 @@
             = "ログアウト"
       .new__mask__main__right
         .new__mask__main__right__top-image
-          = form_with model: @item , url: "#", local: true, method: :get do |f|
-            .new__mask__main__right__top
-              = f.label:image, class: "form-btn__image" do
-                = icon('fas', 'camera', class: 'camera')
-                = f.file_field :image, class: 'hidden'
-              = f.label:image, class: "form-btn__image" do
-                = icon('fas', 'camera', class: 'camera')
-                = f.file_field :image, class: 'hidden'
-              = f.label:image, class: "form-btn__image" do
-                = icon('fas', 'camera', class: 'camera')
-                = f.file_field :image, class: 'hidden'
-              = f.label:image, class: "form-btn__image" do
-                = icon('fas', 'camera', class: 'camera')
-                = f.file_field :image, class: 'hidden'
+          = form_with model: @item , url: {action: 'create'},local: true do |f|
+            .new__mask__main__right__form-contents__title__content 
+              画像（４枚までアップロード可能）
+            .new__mask__main__right__form-contents__title__color-content 
+              ※必須
+            .post__drop__box__container
+              .prev-content
+              .label-content
+                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                  %pre.label-box__text-visible クリックしてファイルをアップロード
+                .hidden-content
+                  = f.fields_for :item_images do |i|
+                    = i.file_field :image, class: 'hidden-field', id: "item_images_attributes_0_image"
+                    %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
+                    %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                    %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                    %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }
+
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -112,7 +116,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form
-                = f.text_area :name, class: 'Product-Description', placeholder: '色・素材・重さ・定価・注意点などを記載しましょう（1000文字まで）例:先月に5,400円で購入したセーターです。着用回数は5回未満です。素材はカシミヤなので着心地がいいです。'
+                = f.text_area :text, class: 'Product-Description', placeholder: '色・素材・重さ・定価・注意点などを記載しましょう（1000文字まで）例:先月に5,400円で購入したセーターです。着用回数は5回未満です。素材はカシミヤなので着心地がいいです。'
             .new__mask__main__right__line
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
@@ -122,7 +126,7 @@
                   ※必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                = f.collection_select :category_id, Category.where(ancestry: nil),:id,:name, {prompt: '---'}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
                 .listing-product-detail__category
                   .listing-product-detail__category__2
             .new__mask__main__right__form-contents
@@ -130,7 +134,7 @@
                 .new__mask__main__right__form-contents__title__content 
                   ブランド
               .new__mask__main__right__form-contents__form-btn
-                = f.select :name , @brandcategory,{}, {class: "Exhibition__btn"} 
+                = f.collection_select :brand_id , Brand.all,:id,:name,{prompt: '---'}, {class: "Exhibition__btn"} 
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -138,7 +142,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = f.select :condition , @condition ,{}, {class: "Exhibition__btn"}
+                = f.collection_select :condition_id , Condition.all ,:id,:condition,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__line
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
@@ -147,7 +151,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = f.select :deliverycharge , @deliverycharge ,{}, {class: "Exhibition__btn"}
+                = f.collection_select :deliverycharge_id , Deliverycharge.all ,:id,:price,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -155,7 +159,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = f.select :spend , @deliveryspend ,{}, {class: "Exhibition__btn"}
+                = f.collection_select :deliveryspend_id, Deliveryspend.all,:id,:spend,{}, {class: "Exhibition__btn"}
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
                 .new__mask__main__right__form-contents__title__content 
@@ -163,7 +167,7 @@
                 .new__mask__main__right__form-contents__title__color-content 
                   ※必須
               .new__mask__main__right__form-contents__form-btn
-                = f.select :prefecture , @deliveryaddres ,{}, {class: "Exhibition__btn"}
+                = f.collection_select :deliveryaddres_id , Deliveryaddre.all, :id, :prefecture, {}, {class: "Exhibition__btn"}
             .new__mask__main__right__line
             .new__mask__main__right__form-contents
               .new__mask__main__right__form-contents__title
@@ -173,7 +177,7 @@
                   ※必須
               .new__mask__main__right__form-contents__form-btn
                 .new__mask__main__right__form-contents__form
-                  = f.text_field :name, class: 'Product-name', placeholder: '¥300~¥2000000（js）'
+                  = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥2000000'
             .new__mask__main__right__form-contents__Verification
               = f.submit '確認する', class: 'Verification-btn'
     .new__mask__main__under-items
