@@ -71,7 +71,7 @@
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
       $(`#preview-box__${id}`).remove();
-      console.log("new")
+    
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_image`).val("");
 
@@ -91,31 +91,4 @@
   });
 
 
-
-
-// $(function(){
-//   $fileField = $('#file')
- 
-//   // 選択された画像を取得し表示
-//   $($fileField).on('change', $fileField, function(e) {
-//     file = e.target.files[0]
-//     reader = new FileReader(),
-//     $preview = $("#img_field");
-//     var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
-//     reader.onload = (function(file) {
-//       return function(e) {
-//         $preview.empty();
-//         $preview.append($('<img>').attr({
-//           src: e.target.result,
-//           width: "150px",
-//           height: "150px",
-//           class: "preview",
-//           title: file.name
-//         }));
-//         $preview.append(btn_wrapper)
-//       };
-//     })(file);
-//     reader.readAsDataURL(file);
-//   });
-// });
 
