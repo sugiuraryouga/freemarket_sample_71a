@@ -183,7 +183,12 @@
         justify-content: space-around;
         &__itemlink {
           display: flex;
-
+          &__name {
+            display: flex;
+          }
+          &__price {
+            display: flex;
+          }
           &__soldout {
             color: red;
             font-size: 25px;
@@ -308,6 +313,12 @@
   padding: 20px;
   text-decoration: none;
   color: #212121;
+}
+.index__main__item__image {
+  height: 213px;
+  width: 273px;
+  object-fit: cover;
+  vertical-align: bottom;
 }
 }
 
