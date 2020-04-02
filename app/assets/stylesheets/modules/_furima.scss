@@ -9,6 +9,7 @@
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
   &__header {
     padding: 0 60px;
+    position: relative;
     &__inner {
       padding: 15px 0 0;
       &__nav {
@@ -208,6 +209,7 @@
     color: #fff;
     background-color: #272727;
     text-align: center;
+    position: relative;
     &__contents {
       display: flex;
       padding: 0 250px;
@@ -289,3 +291,4 @@
   z-index: 1;
 }
 }
+
