@@ -47,8 +47,7 @@ end
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
-    # @comment = Comment.new
-    # @comments = @product.comments.includes(:user)
+    
   end
 
   def confirm
