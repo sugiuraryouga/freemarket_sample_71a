@@ -3,7 +3,8 @@
     .new__header__inner
       .new__header__inner__top
         .form-group
-          = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
+          -if user_signed_in?
+            = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
         .form-seachs
           = form_with url: "#", class: "form-sarch" , local: true, method: :get do |f|
             = f.text_field :keyword, class: 'form__sach', placeholder: '何をお探しですか？'
@@ -126,7 +127,7 @@
                   ※必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                = f.collection_select :category_id, Category.where(ancestry: nil),:id,:name, {prompt: '---'}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                = f.collection_select :category_id, Category.where(ancestry: nil),:id,:name, {prompt: '---'}, {class: 'listing-select-wrapper__box--select', id: 'parent_category',}
                 .listing-product-detail__category
                   .listing-product-detail__category__2
             .new__mask__main__right__form-contents
@@ -177,7 +178,7 @@
                   ※必須
               .new__mask__main__right__form-contents__form-btn
                 .new__mask__main__right__form-contents__form
-                  = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥2000000'
+                  = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥9999999'
             .new__mask__main__right__form-contents__Verification
               = f.submit '確認する', class: 'Verification-btn'
     .new__mask__main__under-items

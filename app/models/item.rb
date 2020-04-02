@@ -13,7 +13,15 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :text, presence: true
-  validates :price, presence: true
+  validates :category_id, presence: true
+  validates :price, presence: true, numericality: { greater_than: 300, less_than: 9999999 }
   validates :item_images, length: { minimum: 1, maximum: 4}
+  
+  
+  # validates  :item_images
+  # def item_images
+  #   errors.add(:item_image, "を1つ以上指定して下さい") if item_images.image < 1
+  #   errors.add(:item_image, "は32個までです") if item_images.image > 4
+  # end
 end
 

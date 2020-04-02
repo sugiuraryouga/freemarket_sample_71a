@@ -1,6 +1,7 @@
 .index
   .index__camera
-    = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), root_path
+    -if user_signed_in?
+      = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), new_item_path
   = render "header"
   .index__main
     .index__main__visual
