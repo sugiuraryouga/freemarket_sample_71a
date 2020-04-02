@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
+
+
   def show
     @item=Item.find(params[:id])
+    @images = @item.item_images
+    @image = @images.first
   end
-  # def create
-  #   @item = Item.new(item_params)
-  #   return if @item.valid?
-  #   render :new
-  # end
-  
 
 end

@@ -46,7 +46,7 @@
                 justify-content: center;
                 margin-top: 10px;
                 &__li1{
-                  width: 25%;
+                  width: 100%;
                   margin: 0 10px 0 0;
                   &__image{
                     object-fit: cover;
@@ -167,7 +167,9 @@
               width: 100%;
               min-height: 104px;
               padding: 10px;
-          
+            }
+            &__submit__link-Purchase {
+              text-align: center;
             }
             &__p{
               padding: 8px;
@@ -301,7 +303,7 @@
           color: #3CCACE;
   }
 
-.index__main__item__content__table__table__tbody__tr__td__a{
+.index__main__item__content__table__table__tbody__tr__td__b{
         text-decoration: none;
         color: #3CCACE;
         padding-right: 12px;
@@ -339,4 +341,15 @@ ul {
   }
   ul {
     list-style: none;
+  }
+  .main-Purchase-btn {
+    line-height: 48px;
+    background: red;
+    border: 1px solid #3CCACE;
+    color: #fff;
+    padding: 10px 100px;
+    font-size: 18px;
+    border-radius: 100px;
+    margin-top: 20px;
+    text-decoration: none;
   }

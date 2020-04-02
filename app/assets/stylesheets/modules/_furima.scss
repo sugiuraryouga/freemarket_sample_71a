@@ -180,8 +180,23 @@
     &__lists__list {
         width: 780px;
         margin: 26px auto;
-        display: flex;
         justify-content: space-around;
+        &__itemlink {
+          display: flex;
+          &__name {
+            display: flex;
+          }
+          &__price {
+            display: flex;
+          }
+          &__soldout {
+            color: red;
+            font-size: 25px;
+          }
+          &__items {
+            padding: 20px;
+          }
+        }
     }
   }
   &__appBanner {
@@ -289,6 +304,21 @@
   position: fixed;
   padding: 15px;
   z-index: 1;
+}
+.index__main__pickupContainer__lists__list__brand {
+  display: flex;
+  margin-left: 83px;
+}
+.index__main__pickupContainer__lists__list__brand__brandlink {
+  padding: 20px;
+  text-decoration: none;
+  color: #212121;
+}
+.index__main__item__image {
+  height: 213px;
+  width: 273px;
+  object-fit: cover;
+  vertical-align: bottom;
 }
 }
 

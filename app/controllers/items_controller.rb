@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_items,only:[:show]
 
   def index
-
-    
+    @items = Item.all
+    @brands = Brand.all
+    @images = ItemImage.all
   end
 
   
@@ -42,10 +43,25 @@ end
     @item=Item.find(params[:id])
     @category=@item.category
     @children=@category.parent
+    @Grandparent = @children.parent
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
     
+  end
+
+  def confirm
+    @item = Item.new(item_params)
+
+    return if @item.valid?
+
+    render :show
+  end
+
+  def back
+    @item = Item.new(item_params)
+
+    render :show
   end
 
   private
