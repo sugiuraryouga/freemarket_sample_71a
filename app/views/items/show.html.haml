@@ -13,14 +13,28 @@
     =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
      =@category.name
  .index__category
- 
-   
-
   .index__main__item
    .index__main__item__content
     .index__main__item__content__top
      %h2.index__main__item__content__top__h2 
 
+  .index__main__item__information
+   -if @Grandparent.has_parent?
+   -else
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+     =@Grandparent.name
+     -if @category.has_parent?
+      =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+       =@category.parent.name
+       -if @category.has_parent?
+        =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+         =@category.name
+
+ .index__category
+  .index__main__item
+   .index__main__item__content
+    .index__main__item__content__top
+     %h2.index__main__item__content__top__h2 
       = @item.name
      .index__main__item__content__top__body
       %ul.index__main__item__content__top__body__ul
@@ -38,7 +52,8 @@
           - for i in 1..(10 - @images.length)
            .index__main__item__content__top__body__ul__ul__li1__image__dummy
     .index__main__item__content__price 
-     %span.index__main__item__content__price__en ¥30000
+     %span.index__main__item__content__price__en
+      = @item.price 
      .index__main__item__content__price__detail
       %spam.index__main__item__content__price__detail___tax (税込)
       %spam.index__main__item__content__price__detail___deliver 送料込み 
@@ -50,6 +65,7 @@
        .index__main__item__content__option__stop 出品を一旦停止する
       = link_to "#",class:"index__main__item__content__delete", method: :delete, data: { turbolinks: false} do
        .index__main__item__content__delete__word この商品を削除する   
+
    -#   -else 
    -#    -if @.status == 0
    -#     = link_to "#", data: {turbolinks: false} do
@@ -57,7 +73,7 @@
    -#    -else
    -#     .product-buy-btn-sold 売り切れました
 
- 
+
     .index__main__item__content__detail
      親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
     .index__main__item__content__table
@@ -69,17 +85,24 @@
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th カテゴリー
         %td.index__main__item__content__table__table__tbody__tr__td 
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@children.parent.name
+         -if @Grandparent.has_parent?
+         -else
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@children.parent.name
          %br
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@category.parent.name
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.parent.name
          %br
-         =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-          =@category.name
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.name
 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th ブランド
+        %td.index__main__item__content__table__table__tbody__tr__td 
+       %tr.index__main__item__content__table__table__tbody__tr
+        %th.index__main__item__content__table__table__tbody__tr__th 商品のサイズ
         %td.index__main__item__content__table__table__tbody__tr__td 
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th 商品の状態
@@ -115,6 +138,9 @@
       %button.index__main__item__content__commentarea__form__submit
        %icon.fa.fa-comment
        コメントする
+    .index__main__item__content__commentarea__form__submit__link-Purchase
+     = link_to order_path(@item), class: "main-Purchase-btn" do
+      = "購入する"
     %ul.index__main__item__content__ul
      %li.index__main__item__content__ul__li
       =link_to "#" ,class:"index__main__item__content__ul__li__a" do

@@ -1,0 +1,56 @@
+.order {
+  width: 50vw;
+  height: 80vh;
+  margin: 30px 210px;
+  border: groove;
+  &__head {
+    border: groove;
+    &__headtitle {
+    text-align: center;
+    font-size: 30px;
+    }
+  }
+  
+  &__main {
+    border: groove;
+    font-size: 22px;
+    &__lists__list {
+      &__listname {
+        display: flex;
+        padding: 20px;
+      }
+    }
+  }
+  &__footer {
+    font-size: 20px;
+    &__footertitle {    
+      &__Product-purchase {
+        display: flex;
+      }
+      &__backlink {
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+.Product-purchase-btn {
+  text-decoration: none;
+  color: red;
+}
+.main-Purchase {
+  width: 100%;
+  text-align: center;
+  line-height: 48px;
+  
+}
+.under-item-btn {
+  line-height: 48px;
+  background: #3CCACE;
+  border: 1px solid #3CCACE;
+  color: #fff;
+  width: 200px;
+  font-size: 18px;
+  border-radius: 100px;
+  padding: 10px 100px;
+}
