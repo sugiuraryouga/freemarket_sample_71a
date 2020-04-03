@@ -1,5 +1,33 @@
 .new
-  = render "header2"
+
+  .new__header
+    .new__header__inner
+      .new__header__inner__top
+        .form-group
+          -if user_signed_in?
+            = link_to image_tag("logo.png", class: "FURIMA-btn", alt: "サンプル画像"), root_path
+        .form-seachs
+          = form_with url: "#", class: "form-sarch" , local: true, method: :get do |f|
+            = f.text_field :keyword, class: 'form__sach', placeholder: '何をお探しですか？'
+            = button_tag type: 'submit', class: "follow-btn" do
+              = icon('fa', 'search')
+      .new__header__inner__nav
+        .new__header__inner__nav__listsLeft
+          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+            = "カテゴリから探す" 
+          = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
+            = "ブランドから探す" 
+        .new__header__inner__nav__listsRight
+          .new__header__inner__nav__listsRight__left
+            = link_to "#" , class: "bell-btn" do
+              = icon('fa', 'bell')
+            = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+              = "お知らせ"
+          .new__header__inner__nav__listsRight__right 
+            = link_to image_tag("member_photo_noimage_thumb.png", class: "mypage-btn", alt: "サンプル画像"), root_path
+            = link_to "#", class: "index__header__inner__nav__listsRight__left-btn" do
+              = "マイページ"
+
   .new__mask
     .new__mask__main
       = render "sideber"
@@ -48,7 +76,7 @@
                   ※必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                = f.collection_select :category_id, Category.where(ancestry: nil),:id,:name, {prompt: '---'}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                = f.collection_select :category_id, Category.where(ancestry: nil),:id,:name, {prompt: '---'}, {class: 'listing-select-wrapper__box--select', id: 'parent_category',}
                 .listing-product-detail__category
                   .listing-product-detail__category__2
             .new__mask__main__right__form-contents
@@ -99,16 +127,10 @@
                   ※必須
               .new__mask__main__right__form-contents__form-btn
                 .new__mask__main__right__form-contents__form
-                  = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥2000000'
+                  = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥9999999'
             .new__mask__main__right__form-contents__Verification
               = f.submit '確認する', class: 'Verification-btn'
-    .new__mask__main__under-items
-      = link_to "#", class: "under-item-btn" do
-        = "フリマ"
-      = link_to "#", class: "under-item-btn" do
-        = "マイページ"
-      = link_to "#", class: "under-item-btn" do
-        = "出品する"
+   
   .index__footer 
     = render "footer2"
 

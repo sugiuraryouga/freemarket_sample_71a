@@ -1,6 +1,9 @@
 .index
   .index__camera
-    = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), new_item_path
+
+    -if user_signed_in?
+      = link_to image_tag("icon_camera.png", class: "camera-btn", alt: "サンプル画像"), new_item_path
+
   = render "header"
   .index__main
     .index__main__visual
@@ -98,22 +101,23 @@
           .index__main__pickupContainer__lists__list__itemlink
             - @items.last(3).reverse.each do |item|
               .index__main__pickupContainer__lists__list__itemlink__items
-                .index__main__pickupContainer__lists__list__itemlink__items__images
-                  - item.item_images.first(1).each do |image|
-                    =image_tag image.image.to_s,class: "index__main__item__image"
-                .index__main__pickupContainer__lists__list__itemlink__name
-                  商品名:
-                  .index__main__pickupContainer__lists__list__itemlink__name__name-name
-                    = item.name
-                .index__main__pickupContainer__lists__list__itemlink__price
-                  商品の価格:
-                  .index__main__pickupContainer__lists__list__itemlink__price__price-price
-                    = item.price
-                - item.orders.each do |order|
-                  - if order.nil?
-                  - else
-                    %p.index__main__pickupContainer__lists__list__itemlink__soldout
-                      売り切れ!!
+                = link_to item_path(item.id), class: "index__header__inner__nav__listsLeft__left-btn" do
+                  .index__main__pickupContainer__lists__list__itemlink__items__images
+                    - item.item_images.first(1).each do |image|
+                      =image_tag image.image.to_s,class: "index__main__item__image"
+                  .index__main__pickupContainer__lists__list__itemlink__name
+                    商品名:
+                    .index__main__pickupContainer__lists__list__itemlink__name__name-name
+                      = item.name
+                  .index__main__pickupContainer__lists__list__itemlink__price
+                    商品の価格:
+                    .index__main__pickupContainer__lists__list__itemlink__price__price-price
+                      = item.price
+                  - item.orders.each do |order|
+                    - if order.nil?
+                    - else
+                      %p.index__main__pickupContainer__lists__list__itemlink__soldout
+                        売り切れ!!
       .index__main__pickupContainer__head
         ピックアップブランド
       .index__main__pickupContainer__headbottom

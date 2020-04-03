@@ -4,6 +4,7 @@
 # Examples:
 
 lady = Category.create(:name=>"レディース")
+men  = Category.create(:name=>"メンズ")
 
 lady_tops = lady.children.create(:name=>"トップス")
 lady_jacket = lady.children.create(:name=>"ジャケット/アウター")
