@@ -130,13 +130,7 @@
                   = f.text_field :price, class: 'Product-name', placeholder: '¥300~¥9999999'
             .new__mask__main__right__form-contents__Verification
               = f.submit '確認する', class: 'Verification-btn'
-    .new__mask__main__under-items
-      = link_to "#", class: "under-item-btn" do
-        = "フリマ"
-      = link_to "#", class: "under-item-btn" do
-        = "マイページ"
-      = link_to "#", class: "under-item-btn" do
-        = "出品する"
+   
   .index__footer 
     = render "footer2"
 
