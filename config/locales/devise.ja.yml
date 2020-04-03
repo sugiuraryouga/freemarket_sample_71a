@@ -12,6 +12,7 @@ ja:
       not_saved:
         one: "エラーにより、この %{resource} を保存できません："
         other: "%{count} 個のエラーにより、この %{resource} を保存できません："
+  
 
   devise:
     failure:
@@ -57,3 +58,12 @@ ja:
       reset_password_instructions:
         subject: 'パスワードの再設定'
       unlock_instructions:
+
+
+ja:
+  activemodel:
+    # 同じ構造なので略
+  # バリデーションエラー
+  errors:
+    messages:
+      blank: "を入力してください"

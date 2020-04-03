@@ -4,6 +4,7 @@
 # Examples:
 
 lady = Category.create(:name=>"レディース")
+men  = Category.create(:name=>"メンズ")
 
 lady_tops = lady.children.create(:name=>"トップス")
 lady_jacket = lady.children.create(:name=>"ジャケット/アウター")
@@ -42,98 +43,98 @@ lady_legwear.children.create([{:name=>"ソックス"}, {:name=>"タイツ/スト
 lady_wig_extension.children.create([{:name=>"ロングストレート"}, {:name=>"ロングカール"}, {:name=>"ショートストレート"}])
 
 
-Condition.create!(
-  [ 
-   {condition: '新品、未使用'},
-   {condition: '未使用に近い'},
-   {condition: '目立った傷や汚れなし'},
-   {condition: 'やや傷や汚れあり'},
-   {condition: '傷や汚れあり'},
-   {condition: '全体的に状態が悪い'}
-  ]
- )
-  Deliveryaddre.create!(
-    [
-      {prefecture: '北海道'},
-      {prefecture: '青森県'},
-      {prefecture: '岩手県'},
-      {prefecture: '宮城県'},
-      {prefecture: '秋田県'},
-      {prefecture: '山形県'},
-      {prefecture: '福島県'},
-      {prefecture: '茨城県'},
-      {prefecture: '栃木県'},
-      {prefecture: '群馬県'},
-      {prefecture: '埼玉県'},
-      {prefecture: '千葉県'},
-      {prefecture: '東京都'},
-      {prefecture: '神奈川県'},
-      {prefecture: '山梨県'},
-      {prefecture: '長野県'},
-      {prefecture: '新潟県'},
-      {prefecture: '富山県'},
-      {prefecture: '石川県'},
-      {prefecture: '福井県'},
-      {prefecture: '岐阜県'},
-      {prefecture: '静岡県'},
-      {prefecture: '愛知県'},
-      {prefecture: '三重県'},
-      {prefecture: '滋賀県'},
-      {prefecture: '京都府'},
-      {prefecture: '大阪府'},
-      {prefecture: '兵庫県'},
-      {prefecture: '奈良県'},
-      {prefecture: '和歌山県'},
-      {prefecture: '鳥取県'},
-      {prefecture: '島根県'},
-      {prefecture: '岡山県'},
-      {prefecture: '広島県'},
-      {prefecture: '山口県'},
-      {prefecture: '徳島県'},
-      {prefecture: '香川県'},
-      {prefecture: '愛媛県'},
-      {prefecture: '高知県'},
-      {prefecture: '福岡県'},
-      {prefecture: '佐賀県'},
-      {prefecture: '長崎県'},
-      {prefecture: '熊本県'},
-      {prefecture: '大分県'},
-      {prefecture: '宮崎県'},
-      {prefecture: '鹿児島県'},
-      {prefecture: '沖縄県'},
-    ]
-  )
+# Condition.create!(
+#   [ 
+#    {condition: '新品、未使用'},
+#    {condition: '未使用に近い'},
+#    {condition: '目立った傷や汚れなし'},
+#    {condition: 'やや傷や汚れあり'},
+#    {condition: '傷や汚れあり'},
+#    {condition: '全体的に状態が悪い'}
+#   ]
+#  )
+#   Deliveryaddre.create!(
+#     [
+#       {prefecture: '北海道'},
+#       {prefecture: '青森県'},
+#       {prefecture: '岩手県'},
+#       {prefecture: '宮城県'},
+#       {prefecture: '秋田県'},
+#       {prefecture: '山形県'},
+#       {prefecture: '福島県'},
+#       {prefecture: '茨城県'},
+#       {prefecture: '栃木県'},
+#       {prefecture: '群馬県'},
+#       {prefecture: '埼玉県'},
+#       {prefecture: '千葉県'},
+#       {prefecture: '東京都'},
+#       {prefecture: '神奈川県'},
+#       {prefecture: '山梨県'},
+#       {prefecture: '長野県'},
+#       {prefecture: '新潟県'},
+#       {prefecture: '富山県'},
+#       {prefecture: '石川県'},
+#       {prefecture: '福井県'},
+#       {prefecture: '岐阜県'},
+#       {prefecture: '静岡県'},
+#       {prefecture: '愛知県'},
+#       {prefecture: '三重県'},
+#       {prefecture: '滋賀県'},
+#       {prefecture: '京都府'},
+#       {prefecture: '大阪府'},
+#       {prefecture: '兵庫県'},
+#       {prefecture: '奈良県'},
+#       {prefecture: '和歌山県'},
+#       {prefecture: '鳥取県'},
+#       {prefecture: '島根県'},
+#       {prefecture: '岡山県'},
+#       {prefecture: '広島県'},
+#       {prefecture: '山口県'},
+#       {prefecture: '徳島県'},
+#       {prefecture: '香川県'},
+#       {prefecture: '愛媛県'},
+#       {prefecture: '高知県'},
+#       {prefecture: '福岡県'},
+#       {prefecture: '佐賀県'},
+#       {prefecture: '長崎県'},
+#       {prefecture: '熊本県'},
+#       {prefecture: '大分県'},
+#       {prefecture: '宮崎県'},
+#       {prefecture: '鹿児島県'},
+#       {prefecture: '沖縄県'},
+#     ]
+#   )
 
 
- Deliveryspend.create!(
-  [
-  {spend: '指定なし'},
-  {spend: '１〜２日で発送'},
-  {spend: '２〜３日で発送'},
-  {spend: '４〜7日で発送'},
-  {spend: '発送は週末のみ'},
-  {spend: '発送は平日のみ'}
-    ]
-  )
+#  Deliveryspend.create!(
+#   [
+#   {spend: '指定なし'},
+#   {spend: '１〜２日で発送'},
+#   {spend: '２〜３日で発送'},
+#   {spend: '４〜7日で発送'},
+#   {spend: '発送は週末のみ'},
+#   {spend: '発送は平日のみ'}
+#     ]
+#   )
 
 
-Deliverycharge.create!(
-  [
-  {price: '送料込み（出品者が負担）'},
-  {price: '着払い（購入者が負担）'},
-  ]
-)
+# Deliverycharge.create!(
+#   [
+#   {price: '送料込み（出品者が負担）'},
+#   {price: '着払い（購入者が負担）'},
+#   ]
+# )
 
-Brand.create!(
- [ 
-  {name: 'ユニクロ'},
-  {name: 'GU'},
-  {name: 'しまむら'},
-  {name: '西松屋'},
-  {name: 'ノーブランド'},
-  {name: 'その他'}
- ]
-)
+# Brand.create!(
+#  [ 
+#   {name: 'ユニクロ'},
+#   {name: 'GU'},
+#   {name: 'しまむら'},
+#   {name: '西松屋'},
+#   {name: 'ノーブランド'},
+#   {name: 'その他'}
+#  ]
+# )
   
 
 

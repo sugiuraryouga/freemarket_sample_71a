@@ -59,6 +59,7 @@
       margin-right: 20vw;
       margin-left: 20vw;
       width: max-content;
+      margin-bottom: 20px;
     &__left {
       font-size: 16px;
       &__title {
@@ -197,12 +198,7 @@
   width: 160px;
   
 }
-.under-item-btn {
-  margin-right: 10px;
-  text-decoration: none;
-  color: darkgrey;
-  font-size: 14px;
-}
+
 .footer__btn {
   color: #fff;
   text-decoration: none;
