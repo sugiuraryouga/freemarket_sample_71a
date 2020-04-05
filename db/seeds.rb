@@ -43,8 +43,8 @@
 # lady_wig_extension.children.create([{:name=>"ロングストレート"}, {:name=>"ロングカール"}, {:name=>"ショートストレート"}])
 
 
-# # Condition.create!(
-# #   [ 
+# Condition.create!(
+#   [ 
 #    {condition: '新品、未使用'},
 #    {condition: '未使用に近い'},
 #    {condition: '目立った傷や汚れなし'},
