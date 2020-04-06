@@ -55,7 +55,7 @@ end
 
   def update
     if @item.update(item_update_params)
-      redirect_to controller: :items, action: :index
+       redirect_to controller: :items, action: :index
     else
       flash[:alert] = '必須事項を入力してください。'
       redirect_to controller: :items, action: :edit
