@@ -4,21 +4,6 @@
  = render "header"
  .index__main
   .index__main__categories
-   =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-    =@children.parent.name
-    %br
-    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-     =@category.parent.name
-    %br
-    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
-     =@category.name
- .index__category
-  .index__main__item
-   .index__main__item__content
-    .index__main__item__content__top
-     %h2.index__main__item__content__top__h2 
-
-  .index__main__item__information
    -if @Grandparent.has_parent?
    -else
     =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
@@ -60,8 +45,11 @@
 
     -if user_signed_in?
      -if @item.user_id == current_user.id
-      = link_to "#" ,class:"index__main__item__content__option" do
-       .index__main__item__content__option__edit 商品の編集・削除ページへ
+      .index__main__item__content-item
+       = link_to edit_item_path(@item) ,class:"index__main__item__content__option2" do
+        .index__main__item__content__option__edit 商品の編集ページへ
+       = link_to "#" ,class:"index__main__item__content__option" do
+        .index__main__item__content__option__edit 出品商品の削除
          
     .index__main__item__content__detail
      親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
@@ -128,13 +116,14 @@
        %icon.fa.fa-comment
        コメントする
     -if user_signed_in?
-     .index__main__item__content__commentarea__form__submit__link-Purchase
-      = link_to "#", class: "main-Purchase-btn" do
-       = "あなたの商品です"
-    -else
-     .index__main__item__content__commentarea__form__submit__link-Purchase
-      = link_to order_path(@item), class: "main-Purchase-btn" do
-       = "購入する"
+     -if @item.user_id == current_user.id
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to "#", class: "main-Purchase-btn" do
+        = "あなたの商品です"
+     -else
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to order_path(@item), class: "main-Purchase-btn" do
+        = "購入する"
     %ul.index__main__item__content__ul
      %li.index__main__item__content__ul__li
       =link_to "#" ,class:"index__main__item__content__ul__li__a" do

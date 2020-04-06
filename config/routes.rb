@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root "items#index"
-  resources :users, only: [:index , :show]
+  resources :users, only: [:index , :show ]
 
   resources :orders, only: [:show]
-  resources :items, only: [:new,:show , :create] do
+  resources :items, only: [:new,:show , :create , :edit ,:update] do
 
     collection do
       get 'get_category_children', defaults: { format: 'json' }

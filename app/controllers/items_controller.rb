@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items,only:[:show]
+  before_action :set_items,only:[:show , :edit , :update , :destroy]
 
   def index
     @items = Item.all
@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   
     def new
       @item = Item.new
-    
       @images=@item.item_images.build
     end
 
@@ -48,34 +47,35 @@ end
     @Grandparent = @children.parent
     @parentcategory=@category.parent
     @images = @item.item_images
-    @image = @images.first
-    
+    @image = @images.first  
   end
 
-  def confirm
-    @item = Item.new(item_params)
-
-    return if @item.valid?
-
-    render :show
+  def edit
   end
 
-  def back
-    @item = Item.new(item_params)
-
-    render :show
+  def update
+    if @item.update(item_update_params)
+       redirect_to controller: :items, action: :index
+    else
+      flash[:alert] = '必須事項を入力してください。'
+      redirect_to controller: :items, action: :edit
+    end
   end
 
   private
 
-
   def set_items
     @item = Item.find(params[:id])
-
   end
 
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :price, :condition_id,:brand_id,  :deliverycharge_id,:deliveryaddres_id,  :deliveryspend_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(
+    :name,
+    [item_images_attributes: [:image, :_destroy, :id]])
   end
 
 end
