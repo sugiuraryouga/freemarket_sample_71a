@@ -116,13 +116,14 @@
        %icon.fa.fa-comment
        コメントする
     -if user_signed_in?
-     .index__main__item__content__commentarea__form__submit__link-Purchase
-      = link_to "#", class: "main-Purchase-btn" do
-       = "あなたの商品です"
-    -else
-     .index__main__item__content__commentarea__form__submit__link-Purchase
-      = link_to order_path(@item), class: "main-Purchase-btn" do
-       = "購入する"
+     -if @item.user_id == current_user.id
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to "#", class: "main-Purchase-btn" do
+        = "あなたの商品です"
+     -else
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to order_path(@item), class: "main-Purchase-btn" do
+        = "購入する"
     %ul.index__main__item__content__ul
      %li.index__main__item__content__ul__li
       =link_to "#" ,class:"index__main__item__content__ul__li__a" do
