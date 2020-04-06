@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items,only:[:show]
+  before_action :set_items,only:[:show , :edit , :update]
 
   def index
     @items = Item.all
@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   
     def new
       @item = Item.new
-    
       @images=@item.item_images.build
     end
 
@@ -52,13 +51,16 @@ end
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_update_params)
-    redirect_to root_path
+    if @item.save
+    redirect_to controller: :items, action: :index
+  else
+    flash[:alert] = '必須事項を入力してください。'
+    redirect_to controller: :items, action: :edit
+  end
   end
 
   private
