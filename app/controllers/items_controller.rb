@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items,only:[:show , :edit , :update]
+  before_action :set_items,only:[:show , :edit , :update , :destroy]
 
   def index
     @items = Item.all
@@ -54,13 +54,12 @@ end
   end
 
   def update
-    @item.update(item_update_params)
-    if @item.save
-    redirect_to controller: :items, action: :index
-  else
-    flash[:alert] = '必須事項を入力してください。'
-    redirect_to controller: :items, action: :edit
-  end
+    if @item.update(item_update_params)
+      redirect_to controller: :items, action: :index
+    else
+      flash[:alert] = '必須事項を入力してください。'
+      redirect_to controller: :items, action: :edit
+    end
   end
 
   private
