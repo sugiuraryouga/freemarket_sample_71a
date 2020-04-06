@@ -63,8 +63,15 @@ end
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if user_signed_in?
+      if @item.user_id == current_user.id
+         @item.destroy
+         redirect_to root_path
+      else 
+         flash[:alert] = '必須事項を入力してください。'
+         redirect_to controller: :items, action: :index
+      end
+    end
   end
 
   private
