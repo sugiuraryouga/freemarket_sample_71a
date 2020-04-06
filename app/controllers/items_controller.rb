@@ -65,11 +65,10 @@ end
   def destroy
     if @item.destroy
       flash[:alert] = '削除が完了しました。'
-      redirect_to controller: :items, action: :index
     else
       flash[:alert] = 'あなたの商品ではありません。'
-      redirect_to controller: :items, action: :index
     end
+    redirect_to controller: :items, action: :index
   end
 
   private
