@@ -1,0 +1,28 @@
+.order
+  .order__head
+    .order__head__headtitle
+      購入確認
+  .order__main
+    .order__main__lists
+      .order__main__lists__list
+      .index__main__item__content__top__body__ul__li
+        =image_tag @image.image.to_s,class: "index__main__item__content__top__body__ul__li__image"
+        .order__main__lists__list__listname
+          商品名:
+          .order__main__lists__list__category
+            = @item.name
+        .order__main__lists__list__listname
+          商品の価格:
+          .order__main__lists__list__category
+            = @item.price
+  .order__footer
+    .order__footer__footertitle
+      .order__footer__footertitle__Product-purchase
+        = form_with url: "#" , class:"main-Purchase" ,local: true, method: :post do |f|
+          = f.submit '購入する', class: 'main-Purchase-btn'
+      .order__footer__footertitle__backlink
+        = link_to item_path(@item) , class: "under-item-btn" do
+          = "戻る"
+
+
+

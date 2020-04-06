@@ -4,6 +4,14 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   root "items#index"
-  resources :users, only: [:index]
-  resources :items, only: [:new,:show]
+  resources :users, only: [:index , :show ]
+
+  resources :orders, only: [:show]
+  resources :items, only: [:new,:show , :create , :edit ,:update] do
+
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    end
 end

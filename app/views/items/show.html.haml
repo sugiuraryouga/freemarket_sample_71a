@@ -4,28 +4,53 @@
  = render "header"
  .index__main
   .index__main__categories
-   -#  @category
-   grandcategory ＞ mothercategory ＞ category
+   -if @Grandparent.has_parent?
+   -else
+    =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+     =@Grandparent.name
+     -if @category.has_parent?
+      =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+       =@category.parent.name
+       -if @category.has_parent?
+        =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__b" do
+         =@category.name
+
+ .index__category
   .index__main__item
    .index__main__item__content
     .index__main__item__content__top
-     %h2.index__main__item__content__top__h2 product3
+     %h2.index__main__item__content__top__h2 
+      = @item.name
      .index__main__item__content__top__body
       %ul.index__main__item__content__top__body__ul
        %li.index__main__item__content__top__body__ul__li
-        =image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png',class: "index__main__item__content__top__body__ul__li__image"
+        =image_tag @image.image.to_s,class: "index__main__item__content__top__body__ul__li__image"
         %ul.index__main__item__content__top__body__ul__ul
-         %li.index__main__item__content__top__body__ul__ul__li1
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png",class:"index__main__item__content__top__body__ul__ul__li1__image"
-         %li.index__main__item__content__top__body__ul__ul__li2
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png",class:"index__main__item__content__top__body__ul__ul__li2__image"
-         %li.index__main__item__content__top__body__ul__ul__li3
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png",class:"index__main__item__content__top__body__ul__ul__li3__image"
+         - @images.each.with_index do |image, index|
+          - if image.present?
+           %li.index__main__item__content__top__body__ul__ul__li1
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
+          - else
+           %li.index__main__item__content__top__body__ul__ul__li1
+            =image_tag image.image.url,class:"index__main__item__content__top__body__ul__ul__li1__image"
+         - if @images.length > 5
+          - for i in 1..(10 - @images.length)
+           .index__main__item__content__top__body__ul__ul__li1__image__dummy
     .index__main__item__content__price 
-     %span.index__main__item__content__price__en ¥30000
+     %span.index__main__item__content__price__en
+      = @item.price 
      .index__main__item__content__price__detail
       %spam.index__main__item__content__price__detail___tax (税込)
       %spam.index__main__item__content__price__detail___deliver 送料込み 
+
+    -if user_signed_in?
+     -if @item.user_id == current_user.id
+      .index__main__item__content-item
+       = link_to edit_item_path(@item) ,class:"index__main__item__content__option2" do
+        .index__main__item__content__option__edit 商品の編集ページへ
+       = link_to "#" ,class:"index__main__item__content__option" do
+        .index__main__item__content__option__edit 出品商品の削除
+         
     .index__main__item__content__detail
      親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
     .index__main__item__content__table
@@ -37,11 +62,19 @@
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th カテゴリー
         %td.index__main__item__content__table__table__tbody__tr__td 
-         =link_to "ベビーキッズ","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         -if @Grandparent.has_parent?
+         -else
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@children.parent.name
          %br
-         =link_to "ベビー服","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.parent.name
          %br
-         =link_to "アウター","#",class:"index__main__item__content__table__table__tbody__tr__td__a"
+         -if @category.has_parent?
+          =link_to "#",class:"index__main__item__content__table__table__tbody__tr__td__a" do
+           =@category.name
+
        %tr.index__main__item__content__table__table__tbody__tr
         %th.index__main__item__content__table__table__tbody__tr__th ブランド
         %td.index__main__item__content__table__table__tbody__tr__td 
@@ -82,6 +115,15 @@
       %button.index__main__item__content__commentarea__form__submit
        %icon.fa.fa-comment
        コメントする
+    -if user_signed_in?
+     -if @item.user_id == current_user.id
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to "#", class: "main-Purchase-btn" do
+        = "あなたの商品です"
+     -else
+      .index__main__item__content__commentarea__form__submit__link-Purchase
+       = link_to order_path(@item), class: "main-Purchase-btn" do
+        = "購入する"
     %ul.index__main__item__content__ul
      %li.index__main__item__content__ul__li
       =link_to "#" ,class:"index__main__item__content__ul__li__a" do
@@ -107,6 +149,7 @@
     =image_tag "5a902db97f96951c82922874.png",class:"index__showbarnner__inner__icon__a__image"
    =link_to "#" ,class:"index__showbarnner__inner__icon__a2" do
     =image_tag "google-play-badge.png",class:"index__showbarnner__inner__icon__a2__image"
+
 = render "footer"
  
 
