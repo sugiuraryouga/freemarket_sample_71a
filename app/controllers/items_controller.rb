@@ -62,6 +62,15 @@ end
     end
   end
 
+  def destroy
+    if @item.destroy
+      flash[:alert] = '削除が完了しました。'
+    else
+      flash[:alert] = 'あなたの商品ではありません。'
+    end
+    redirect_to controller: :items, action: :index
+  end
+
   private
 
   def set_items

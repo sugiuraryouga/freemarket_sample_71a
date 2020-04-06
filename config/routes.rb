@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index , :show ]
 
   resources :orders, only: [:show]
-  resources :items, only: [:new,:show , :create , :edit ,:update] do
+  resources :items, only: [:new,:show , :create , :edit ,:update , :destroy] do
 
     collection do
       get 'get_category_children', defaults: { format: 'json' }
