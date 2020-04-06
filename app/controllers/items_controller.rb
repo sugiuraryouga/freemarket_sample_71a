@@ -63,14 +63,12 @@ end
   end
 
   def destroy
-    if user_signed_in?
-      if @item.user_id == current_user.id
-         @item.destroy
-         redirect_to root_path
-      else 
-         flash[:alert] = 'あなたの商品ではありません。'
-         redirect_to controller: :items, action: :index
-      end
+    if @item.destroy
+      flash[:alert] = '削除が完了しました。'
+      redirect_to controller: :items, action: :index
+    else
+      flash[:alert] = 'あなたの商品ではありません。'
+      redirect_to controller: :items, action: :index
     end
   end
 
