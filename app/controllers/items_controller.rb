@@ -68,7 +68,7 @@ end
          @item.destroy
          redirect_to root_path
       else 
-         flash[:alert] = '必須事項を入力してください。'
+         flash[:alert] = 'あなたの商品ではありません。'
          redirect_to controller: :items, action: :index
       end
     end
