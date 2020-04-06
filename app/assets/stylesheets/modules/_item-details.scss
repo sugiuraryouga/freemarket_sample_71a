@@ -14,6 +14,7 @@
       &__content{
         padding: 40px;
         margin: 0 auto;
+        
         &__top{
           background-color: #fff;
           padding: 24px 40px 40px;
@@ -130,6 +131,7 @@
         &__option{
           display: flex;
           justify-content: space-between;
+          margin-left: auto;
           &__ul{
             margin: 10px 0 0;
             display: flex;
@@ -353,3 +355,10 @@ ul {
     margin-top: 20px;
     text-decoration: none;
   }
+.index__main__item__content-item {
+  display: flex;
+}
+.index__main__item__content__option2 {
+  text-decoration: none;
+  color: #3CCACE;
+}

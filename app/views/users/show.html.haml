@@ -1,28 +1,37 @@
 .new
-  = render "header2"
+  = render "items/header2"
   .new__mask
     .new__mask__main
-      = render "sideber"
+      = render "items/sideber"
       .new__mask__main__showright
         .new__mask__main__showright__title
           〇〇さんのマイページ
         .new__mask__main__showright__title__panel-default
           .new__mask__main__showright__title__panel-default__panel-heading
-            最近見た商品
+            投稿した商品
           .new__mask__main__showright__title__items
-            .new__mask__main__showright__title__items__item
-              .new__mask__main__showright__title__items__image
-                写真
-              .new__mask__main__showright__title__items__name
-                商品名
-              .new__mask__main__showright__title__items__price
-                〇〇円
-            .new__mask__main__showright__title__items__item
-              .new__mask__main__showright__title__items__image
-                写真
-              .new__mask__main__showright__title__items__name
-                商品名
-              .new__mask__main__showright__title__items__price
-                〇〇円
+            - @exhibitions.each do |exhibition|
+              .new__mask__main__showright__title__items__item
+                #preview
+                .new__mask__main__showright__title__items__image
+                  - exhibition.item_images.first(1).each do |image|
+                    =image_tag image.image.to_s,class: "index__main__item__image"
+                    .upper-message__datebtn
+                    
+                #preview2
+                .new__mask__main__showright__title__items__images
+                  - exhibition.item_images.drop(1).each do |image , i|
+                    .upper-message__datebtn
+                     
+                    =image_tag image.image.to_s , class: "show-images"
+                    
+                .index__main__pickupContainer__lists__list__itemlink__name
+                  商品名:
+                  .new__mask__main__showright__title__items__name
+                    = exhibition.name
+                .index__main__pickupContainer__lists__list__itemlink__price
+                  商品の価格:
+                  .new__mask__main__showright__title__items__price
+                    = exhibition.price
   .index__footer 
-    = render "footer2"
+    = render "items/footer"
