@@ -39,12 +39,14 @@
       //読み込み時に発火するイベント
       reader.onload = function() {
         var image = this.result;
+        //ここのif追加しましたープレビューが元々なかった場合はhtmlを追加
+        if ($(`#preview-box__${id}`).length == 0) {
           var count = $('.preview-box').length;
           var html = buildHTML(id);
           //ラベルの直前のプレビュー群にプレビューを追加
           var prevContent = $('.label-content').prev();
           $(prevContent).append(html);
-        
+        }
         //イメージを追加
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
