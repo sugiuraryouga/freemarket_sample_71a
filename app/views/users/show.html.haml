@@ -22,7 +22,9 @@
                 .new__mask__main__showright__title__items__images
                   - exhibition.item_images.drop(1).each do |image , i|
                     .upper-message__datebtn
-                     
+                      = form_with model: @exhibitions , url: "#", local: true, method: :delete  do |f|
+                        .form-xx
+                          = f.submit '削除', class: 'upper-message__btn'
                     =image_tag image.image.to_s , class: "show-images"
                     
                 .index__main__pickupContainer__lists__list__itemlink__name

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   }
 
   root "items#index"
-  resources :users, only: [:index , :show ]
+
+  resources :users, only: [:index , :show , :edit]
+  resources :orders, only: [:show]
 
   resources :items, only: [:new,:show , :create , :edit ,:update , :destroy] do
     resources :card, only: [:index] do
