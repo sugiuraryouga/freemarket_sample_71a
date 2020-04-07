@@ -114,10 +114,13 @@
                     .index__main__pickupContainer__lists__list__itemlink__price__price-price
                       = item.price
                   - item.orders.each do |order|
+                    .sold-out 売り切れ
                     - if order.nil?
                     - else
-                      %p.index__main__pickupContainer__lists__list__itemlink__soldout
-                        売り切れ!!
+                      .items-box_photo__sold
+                        .items-box_photo__sold__inner
+                          SOLD
+                          
       .index__main__pickupContainer__head
         ピックアップブランド
       .index__main__pickupContainer__headbottom

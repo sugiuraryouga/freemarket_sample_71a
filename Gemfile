@@ -81,6 +81,7 @@ gem 'mini_magick'
 gem 'turbolinks'
 gem 'rails-i18n'
 gem 'fog-aws'
+gem 'payjp'
 group :production do
   gem 'unicorn', '5.4.1'
 end

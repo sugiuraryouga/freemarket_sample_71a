@@ -43,6 +43,7 @@ end
 
   def show
     @item=Item.find(params[:id])
+    @orders=@item.orders
     @category=@item.category
     @children=@category.parent
     @Grandparent = @children.parent
