@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_04_03_103443) do
+ActiveRecord::Schema.define(version: 2020_04_05_042935) do
+
 
   create_table "Profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
@@ -31,12 +32,22 @@ ActiveRecord::Schema.define(version: 2020_04_03_103443) do
     t.integer "postcode", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_deliver_adresses_on_user_id"
+  end
 
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "customer_id"
+    t.string "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,8 +137,12 @@ ActiveRecord::Schema.define(version: 2020_04_03_103443) do
   end
 
 
+  add_foreign_key "cards", "users"
+
+
   add_foreign_key "Profiles", "users"
   add_foreign_key "deliver_adresses", "users"
+
 
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
