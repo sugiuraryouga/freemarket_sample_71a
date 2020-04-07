@@ -42,15 +42,12 @@ class ItemsController < ApplicationController
 end
 
   def show
-    @item=Item.find(params[:id])
-    @orders=@item.orders
     @category=@item.category
     @children=@category.parent
     @Grandparent = @children.parent
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
-    
   end
 
   def confirm

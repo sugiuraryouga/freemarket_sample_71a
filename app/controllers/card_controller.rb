@@ -39,6 +39,7 @@ class CardController < ApplicationController
         flash[:notice] = 'クレジットカード情報を登録しました。'
         redirect_to action: "show"
       else
+        flash[:error] = '情報は正しく入力してください。'
         redirect_to action: "pay"
       end
     end
