@@ -18,9 +18,13 @@
       .index__header__inner__nav__listsRight
         - if user_signed_in?
           .user_nav.grid-6
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            .links
+              = link_to "ログアウト", destroy_user_session_path, class: "index__header__inner__nav__listsLeft__left-btn" ,  method: :delete
 
-            = link_to  "投稿する", new_item_path, class: "post"
+              .new__header__inner__nav__listsRight__right 
+                = link_to image_tag("member_photo_noimage_thumb.png", class: "mypage-btn", alt: "サンプル画像"), user_path(current_user)
+                = link_to user_path(current_user), class: "index__header__inner__nav__listsRight__left-btn" do
+                  = "マイページ"
 
         - else
           .grid-6
