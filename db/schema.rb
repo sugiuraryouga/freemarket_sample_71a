@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_04_07_051052) do
 
-ActiveRecord::Schema.define(version: 2020_04_05_042935) do
+
 
 
   create_table "Profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
     t.index ["user_id"], name: "index_Profiles_on_user_id"
   end
 
+
   create_table "deliver_adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
     t.string "city", null: false
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_deliver_adresses_on_user_id"
   end
+
 
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,6 +67,16 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deliver_adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "adress1", null: false
+    t.string "adress2", null: false
+    t.integer "postcode", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_deliver_adresses_on_user_id"
+  end
+
   create_table "deliveryaddres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
     t.datetime "created_at", null: false
@@ -88,7 +101,6 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
     t.datetime "updated_at", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_item_images_on_item_id"
-
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,8 +115,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
     t.bigint "deliveryspend_id", null: false
     t.bigint "deliverycharge_id", null: false
     t.bigint "brand_id"
-    t.bigint "category_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition_id"], name: "index_items_on_condition_id"
@@ -143,7 +155,6 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
   add_foreign_key "Profiles", "users"
   add_foreign_key "deliver_adresses", "users"
 
-
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
@@ -152,5 +163,4 @@ ActiveRecord::Schema.define(version: 2020_04_05_042935) do
   add_foreign_key "items", "deliverycharges"
   add_foreign_key "items", "deliveryspends"
   add_foreign_key "items", "users"
-
 end
