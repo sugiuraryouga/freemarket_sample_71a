@@ -25,6 +25,7 @@
 
 ## profilesテーブル
 |Column|Type|Options|
+|------|----|-------|
 |first_name|string|null:false|
 |family_name|string|null:false|
 |first_name_kana|string|null:false|
@@ -143,6 +144,7 @@ belongs_to :user
 
 ## credit_cardsテーブル
 |Column|Type|Options|
+|------|----|-------|
 |card_number|integer|null:false, unique: true|
 |expiration_year|integer|null:false|
 |expiration_month|integer|null:false|

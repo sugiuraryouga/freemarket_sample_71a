@@ -17,9 +17,7 @@
                   - exhibition.item_images.first(1).each do |image|
                     =image_tag image.image.to_s,class: "index__main__item__image"
                     .upper-message__datebtn
-                      = form_with model: @exhibitions , url: "#" , local: true, method: :delete  do |f|
-                        .form-xx
-                          = f.submit '削除', class: 'upper-message__btn'
+                    
                 #preview2
                 .new__mask__main__showright__title__items__images
                   - exhibition.item_images.drop(1).each do |image , i|
@@ -39,4 +37,3 @@
                     = exhibition.price
   .index__footer 
     = render "items/footer"
-    
