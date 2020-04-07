@@ -2,11 +2,13 @@ class UsersController < ApplicationController
   def index
   end
 
+
   def show
     @items=Item.all
     @user=User.find_by(id: current_user.id)
     @exhibitions = @user.items
   end
+
 
   private
 
@@ -21,5 +23,6 @@ class UsersController < ApplicationController
   def deliver_adress_params
     params.require(:deliver_adress).permit(:postcord, :prefecture, :city, :adress1, :adress2, :telephone)
   end
+
 
 end
