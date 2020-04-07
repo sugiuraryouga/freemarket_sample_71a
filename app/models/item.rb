@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   
   
   has_many   :item_images,dependent: :destroy
-  has_many   :orders
+  has_one   :order
   belongs_to :brand
   belongs_to :condition
   belongs_to :deliveryaddre

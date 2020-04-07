@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_04_07_051052) do
 
+
+
+
   create_table "Profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name_kana", null: false
@@ -22,10 +25,32 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.index ["user_id"], name: "index_Profiles_on_user_id"
   end
 
+
+  create_table "deliver_adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "adress1", null: false
+    t.string "adress2", null: false
+    t.integer "postcode", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_deliver_adresses_on_user_id"
+  end
+
+
+
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "customer_id"
+    t.string "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,8 +148,13 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "cards", "users"
+
+
   add_foreign_key "Profiles", "users"
   add_foreign_key "deliver_adresses", "users"
+
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
