@@ -4,8 +4,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   root "items#index"
-  resources :users, only: [:index , :show ]
-
+  resources :users, only: [:index , :show , :edit]
   resources :orders, only: [:show]
   resources :items, only: [:new,:show , :create , :edit ,:update , :destroy] do
 
