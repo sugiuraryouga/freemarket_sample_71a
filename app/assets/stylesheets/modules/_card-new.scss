@@ -19,15 +19,26 @@
         width: 274px;
         margin-bottom: 15px;
       }
+      
       .cvc {
         width: 218px;
         margin-bottom: 15px;
         margin-top: 15px;
       }
       .token-btn {
-        width: 12vw;
-        height: 4vh;
-        background-color: darkgray;
+        line-height: 32px;
+        background: #3CCACE;
+        border: 1px solid #3CCACE;
+        color: #fff;
+        width: 60%;
+        font-size: 18px;
+        border-radius: 100px;
+        margin: 20px 0;
+      }
+      .show-backlink {
+        text-decoration: none;
+        color: black;
+        margin-bottom: 5vh;
       }
     }
   }
