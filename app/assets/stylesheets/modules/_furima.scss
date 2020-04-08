@@ -24,6 +24,9 @@
         &__listsRight {
           margin-left: auto;
           display: flex;
+          .links {
+            display: flex;
+          }
           &__left-btn {
             padding-right: 30px;
             text-decoration: none;
