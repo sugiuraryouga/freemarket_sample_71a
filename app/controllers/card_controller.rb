@@ -12,7 +12,7 @@ class CardController < ApplicationController
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
@@ -27,11 +27,8 @@ class CardController < ApplicationController
 
   def create #payjpとCardのデータベース作成を実施します。
    
-    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
-    # if params[:payjp_token].blank?
-    #   binding.pry
-    #   redirect_to action: "new"
-    # else
+    Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
+  
       customer = Payjp::Customer.create(
         card: params[:payjp_token],
         metadata: {user_id: current_user.id}
@@ -51,7 +48,7 @@ class CardController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -60,14 +57,13 @@ class CardController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
-    # @item=Item.find(params[:item_id])
+    
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
-      # binding.pry
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
