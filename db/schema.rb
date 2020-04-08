@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_04_07_051052) do
 
-  create_table "Profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "family_name_kana", null: false
-    t.bigint "user_id", null: false
-    t.date "birthday", null: false
-    t.string "first_name", null: false
-    t.index ["user_id"], name: "index_Profiles_on_user_id"
-  end
-
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -119,6 +109,16 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "family_name_kana", null: false
+    t.bigint "user_id", null: false
+    t.date "birthday", null: false
+    t.string "first_name", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "Profiles", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "deliver_adresses", "users"
   add_foreign_key "item_images", "items"
@@ -143,4 +142,5 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
   add_foreign_key "items", "deliverycharges"
   add_foreign_key "items", "deliveryspends"
   add_foreign_key "items", "users"
+  add_foreign_key "profiles", "users"
 end
