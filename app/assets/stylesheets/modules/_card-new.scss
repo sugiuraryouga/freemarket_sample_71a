@@ -1,0 +1,34 @@
+.card {
+  height: 100vh;
+  width: 100vw;
+  &__items {
+    margin-top: 7vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-bottom: 26vh;
+    &__head {
+      text-align: center;
+    }
+    &__main {
+      text-align: center;
+      .title {
+        font-size: 25px;
+        padding-bottom: 15px;
+      }
+      .number {
+        width: 274px;
+        margin-bottom: 15px;
+      }
+      .cvc {
+        width: 218px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+      }
+      .token-btn {
+        width: 12vw;
+        height: 4vh;
+        background-color: darkgray;
+      }
+    }
+  }
+}

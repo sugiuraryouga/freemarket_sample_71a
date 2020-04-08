@@ -26,8 +26,9 @@ class CardController < ApplicationController
   end
 
   def create #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
-    if params['payjp-token'].blank?
+    binding.pry
+    # Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+    if Payjp.api_key = Rails.application.credentials.payjp[:payjp_public_key]
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
@@ -54,7 +55,7 @@ class CardController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+    redirect_to action: "new"
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
