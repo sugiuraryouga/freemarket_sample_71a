@@ -78,7 +78,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'turbolinks'
+
 gem 'rails-i18n'
 gem 'fog-aws'
 gem 'payjp'
