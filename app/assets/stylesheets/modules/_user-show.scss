@@ -31,6 +31,14 @@
       }
     }
   }
+  &__card{
+    margin-left: 500px;
+    padding-bottom: 30px;
+    &__btn{
+      text-decoration: none;
+      color: rgb(125, 228, 228);
+    }
+  }
 }
 .show-images {
   width: 200px;

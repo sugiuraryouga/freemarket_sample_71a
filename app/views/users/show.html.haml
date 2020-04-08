@@ -5,7 +5,10 @@
       = render "items/sideber"
       .new__mask__main__showright
         .new__mask__main__showright__title
-          〇〇さんのマイページ
+          = "#{@user.name}さんのマイページ"
+        .new__mask__main__showright__card
+          = link_to new_card_path ,class: "new__mask__main__showright__card__btn" do
+            クレジットカード情報編集
         .new__mask__main__showright__title__panel-default
           .new__mask__main__showright__title__panel-default__panel-heading
             投稿した商品
