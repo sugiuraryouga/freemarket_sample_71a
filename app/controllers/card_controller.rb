@@ -12,7 +12,7 @@ class CardController < ApplicationController
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
@@ -22,19 +22,18 @@ class CardController < ApplicationController
 
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    # redirect_to action: "show" if card.exists?
   end
 
   def create #payjpとCardのデータベース作成を実施します。
-    binding.pry
-    # Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
-    if Payjp.api_key = Rails.application.credentials.payjp[:payjp_public_key]
-      redirect_to action: "new"
-    else
+   
+    Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
+  
       customer = Payjp::Customer.create(
-      card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
-      ) #念の為metadataにuser_idを入れましたがなくてもOK
+        card: params[:payjp_token],
+        metadata: {user_id: current_user.id}
+      ) 
+      #念の為metadataにuser_idを入れましたがなくてもOK
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         flash[:notice] = 'クレジットカード情報を登録しました。'
@@ -44,13 +43,12 @@ class CardController < ApplicationController
         redirect_to action: "pay"
       end
     end
-  end
 
   def delete #PayjpとCardデータベースを削除します
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -59,12 +57,12 @@ class CardController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
-    # @item=Item.find(params[:item_id])
+    
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
