@@ -53,7 +53,7 @@ class CardController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+    redirect_to action: "new"
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します

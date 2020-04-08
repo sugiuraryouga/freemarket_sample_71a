@@ -17,7 +17,11 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :price, presence: true, numericality: { greater_than: 300, less_than: 9999999 }
   validates :item_images, length: { minimum: 1, maximum: 4}
-  
+  validates :condition_id, presence: true
+  validates :deliverycharge_id, presence: true
+  validates :deliveryspend_id, presence: true
+  validates :deliveryaddres_id, presence: true
+  validates :user_id, presence: true
   
   # validates  :item_images
   # def item_images
