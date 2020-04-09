@@ -1,0 +1,20 @@
+.new
+  = render "items/header2"
+  .new__mask
+    .new__mask__main
+      = render "items/sideber"
+      .new__mask__main__showright
+        .new__mask__main__showright__title
+          商品を削除します。よろしいですか？
+          %br
+          %br
+          商品名:
+          = @item.name
+          %br
+          %br
+          = link_to item_path(params[:id]), method: :delete, class: "index__main__item__content__option"  do
+            .index__main__item__content__option__edit 出品商品の削除
+          
+
+  .index__footer 
+    = render "items/footer"

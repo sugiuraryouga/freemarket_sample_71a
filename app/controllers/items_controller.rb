@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items,only:[:show , :edit , :update , :destroy]
+  before_action :set_items,only:[:show , :edit , :update , :destroy,:kakuninn]
 
   def index
     @items = Item.all
@@ -69,6 +69,19 @@ end
     end
     redirect_to controller: :items, action: :index
   end
+
+
+
+  def search
+    @items = Item.search(params[:search][:keyword])
+
+  end
+
+  def kakuninn
+    @images=@item.item_images
+    @image=@images.first
+  end
+
 
   private
 

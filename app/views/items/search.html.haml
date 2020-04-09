@@ -1,0 +1,19 @@
+.new
+  = render "items/header2"
+  .new__mask
+    .new__mask__main
+      = render "items/sideber"
+      .new__mask__main__showright
+        .new__mask__main__showright__title
+          検索結果
+        .new__mask__main__showright__title__panel-default
+          .new__mask__main__showright__title__panel-default__panel-heading
+            -@items.each do|item|
+              = link_to item_path(item),class:"new__mask__main__showright__title__panel-default__panel-heading__div" do
+                .new__mask__main__showright__title__panel-default__panel-heading_name
+                  =item.name
+                  %br
+                  - item.item_images.first(1).each do |image|
+                    =image_tag image.image.to_s
+  .index__footer 
+    = render "items/footer"

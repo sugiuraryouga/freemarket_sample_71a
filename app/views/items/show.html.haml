@@ -55,7 +55,7 @@
       .index__main__item__content-item
        = link_to edit_item_path(@item) ,class:"index__main__item__content__option2" do
         .index__main__item__content__option__edit 商品の編集ページへ
-       = link_to item_path(@item), method: :delete, class: "index__main__item__content__option"  do
+       = link_to kakuninn_item_path(@item), class: "index__main__item__content__option"  do
         .index__main__item__content__option__edit 出品商品の削除
 
     .index__main__item__content__detail
