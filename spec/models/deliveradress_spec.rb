@@ -20,12 +20,6 @@ describe "deliveradress" do
       expect(deliveradress.errors[:adress1]).to include("を入力してください")
     end
 
-    it "adress2がない場合は登録できないこと" do
-      deliveradress = build(:DeliverAdress, adress2: nil)
-      deliveradress.valid?
-      expect(deliveradress.errors[:adress2]).to include("を入力してください")
-    end
-
     it "postcodeがない場合は登録できないこと" do
       deliveradress = build(:DeliverAdress, postcode: nil)
       deliveradress.valid?
