@@ -4,6 +4,5 @@ class DeliverAdress < ApplicationRecord
   validates :prefecture, presence: true
   validates :city, presence: true
   validates :adress1, presence: true
-  validates :adress2, presence: true
   validates :postcode, presence: true
 end
