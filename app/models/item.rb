@@ -23,10 +23,12 @@ class Item < ApplicationRecord
   validates :deliveryaddres_id, presence: true
   validates :user_id, presence: true
   
-  # validates  :item_images
-  # def item_images
-  #   errors.add(:item_image, "を1つ以上指定して下さい") if item_images.image < 1
-  #   errors.add(:item_image, "は32個までです") if item_images.image > 4
-  # end
+
+  def self.search(search)
+    
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
+
 end
 

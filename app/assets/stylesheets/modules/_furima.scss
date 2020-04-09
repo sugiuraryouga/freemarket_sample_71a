@@ -12,6 +12,11 @@
     position: relative;
     &__inner {
       padding: 15px 0 0;
+      &__main{
+        &__icon{
+          display: flex;
+        }
+      }
       &__nav {
         font-size: 14px;
         display: flex;
@@ -268,6 +273,7 @@
   background-color: #3CCACE;
   color: aliceblue;
   font-size: 15px;
+  width: 50px;
 }
 .APPstore-btn {
   height: 45px;
@@ -351,4 +357,17 @@
 }
 .index__main__item__content__detail{
       padding: 0 25%;
+}
+.form__sach__new{
+  display: flex;
+  width: 100%;
+}
+.form__sach{
+  margin-top: 10px;
+}
+.new__mask__main__showright__title__panel-default__panel-heading_name{
+  font-size: 30px;
+}
+.new__mask__main__showright__title__panel-default__panel-heading__div{
+  text-decoration: none;
 }
