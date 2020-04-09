@@ -24,6 +24,9 @@
         &__listsRight {
           margin-left: auto;
           display: flex;
+          .links {
+            display: flex;
+          }
           &__left-btn {
             padding-right: 30px;
             text-decoration: none;
@@ -153,9 +156,9 @@
       }
       &__detail {
         margin: 0 0 40px;
-    font-size: 17px;
-    font-weight: 200;
-    text-align: left;
+        font-size: 17px;
+        font-weight: 200;
+        text-align: left;
       }
     }
   }
@@ -322,3 +325,30 @@
 }
 }
 
+.items-box_photo__sold{
+  width: 0;
+  height: 0;
+  border-top: 60px solid #ea352d ;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #ea352d ;
+  z-index:1;
+  position: relative;
+  top:-305px;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 28px;
+    margin:-35px 0px 0px -55px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+    z-index: 2;
+  }
+}
+.sold-out{
+  color: red;
+  font-size: 30px;
+}
+.index__main__item__content__detail{
+      padding: 0 25%;
+}

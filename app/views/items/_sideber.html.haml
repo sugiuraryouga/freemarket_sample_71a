@@ -50,5 +50,4 @@
     = link_to "#", class: "left-form__btn" do
       = "はじめての方へ"
   .new__mask__main__left__leftform-group
-    = link_to "#", class: "left-form__btn" do
-      = "ログアウト"
+    = link_to "ログアウト", destroy_user_session_path, class: "left-form__btn" ,  method: :delete

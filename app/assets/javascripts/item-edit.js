@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+
   $(function(){
     //プレビューのhtmlを定義
     function buildHTML(count) {
@@ -145,4 +145,3 @@ $(document).on('turbolinks:load', function(){
     $(`#item_item_images_attributes_${index_num}_image`).click();
       });
   });
-});

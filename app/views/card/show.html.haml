@@ -1,0 +1,19 @@
+.card
+  .card__items
+    .card__items__head
+      =link_to "/" do
+        = image_tag "logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
+    .card__items__main
+      %label.title 登録クレジットカード情報
+      %br
+      = "**** **** **** " + @default_card_information.last4
+      %br
+      - exp_month = @default_card_information.exp_month.to_s
+      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      = exp_month + " / " + exp_year
+      = form_tag(delete_card_index_path, method: :destroy, id: 'charge-form',  name: "inputForm") do
+        %input{ type: "hidden", name: "card_id", value: "" }
+        %button.token-btn 削除する
+      = link_to root_path do
+        .show-backlink 商品一覧へ戻る
+  = render 'items/footer'

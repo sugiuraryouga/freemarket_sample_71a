@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many   :likes,dependent: :destroy
-  has_many   :comments,dependent: :destroy
+  
+  
   has_many   :item_images,dependent: :destroy
-  has_many   :orders
+  has_one   :order
   belongs_to :brand
   belongs_to :condition
   belongs_to :deliveryaddre
@@ -17,7 +17,11 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :price, presence: true, numericality: { greater_than: 300, less_than: 9999999 }
   validates :item_images, length: { minimum: 1, maximum: 4}
-  
+  validates :condition_id, presence: true
+  validates :deliverycharge_id, presence: true
+  validates :deliveryspend_id, presence: true
+  validates :deliveryaddres_id, presence: true
+  validates :user_id, presence: true
   
   # validates  :item_images
   # def item_images

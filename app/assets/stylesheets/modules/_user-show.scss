@@ -22,12 +22,26 @@
       border-radius: 4px;
       box-shadow: 0 1px 1px rgba(0,0,0,0.05);
       padding: 15px;
-      display: flex;
+      &__images {
+        display: flex;
+      }
       &__item {
         border-color: #e5e5e5;
         margin: 0 20px 24px;
       }
     }
   }
+  &__card{
+    margin-left: 500px;
+    padding-bottom: 30px;
+    &__btn{
+      text-decoration: none;
+      color: rgb(125, 228, 228);
+    }
+  }
 }
-
+.show-images {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}

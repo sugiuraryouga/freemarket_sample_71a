@@ -41,13 +41,12 @@ class ItemsController < ApplicationController
 end
 
   def show
-    @item=Item.find(params[:id])
     @category=@item.category
     @children=@category.parent
     @Grandparent = @children.parent
     @parentcategory=@category.parent
     @images = @item.item_images
-    @image = @images.first  
+    @image = @images.first
   end
 
   def edit
@@ -60,6 +59,15 @@ end
       flash[:alert] = '必須事項を入力してください。'
       redirect_to controller: :items, action: :edit
     end
+  end
+
+  def destroy
+    if @item.destroy
+      flash[:alert] = '削除が完了しました。'
+    else
+      flash[:alert] = 'あなたの商品ではありません。'
+    end
+    redirect_to controller: :items, action: :index
   end
 
   private
