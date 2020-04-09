@@ -140,7 +140,6 @@
     });
     // 画像の編集
     $(document).on('click', '.update-box', function() {
-      console.log("ok")
       var index_num = $(this).data("image-index");
       
     $(`#item_item_images_attributes_${index_num}_image`).click();
