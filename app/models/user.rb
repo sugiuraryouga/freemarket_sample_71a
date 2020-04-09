@@ -4,11 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   has_many :cards
 
 
   
-  # validates :name, presence: true, uniqueness: true
+  
   has_one :profile
   has_one :deliver_adress
   accepts_nested_attributes_for :profile, allow_destroy: true
@@ -18,5 +19,9 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :items
+
+  validates :name, presence: true, length: { maximum: 6 }
+  validates :email, presence: true
+  validates :password, presence: true
 end
 
