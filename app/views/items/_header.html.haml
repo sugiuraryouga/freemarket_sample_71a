@@ -6,9 +6,9 @@
           .form-group
             =link_to "/" do
               = image_tag "logo.png", alt: "Rails icon", id: "pic1", class: "FURIMA-btn"
-            = f.text_field :keyword, class: 'form__sach', placeholder: 'キーワードから探す'
-            = button_tag type: 'submit', class: "follow-btn" do
-              = icon('fa', 'search')
+        = form_with scope: :search,  url: search_items_path, method: :get, local: true,class:"form__sach__new" do |form| 
+          = form.text_field :keyword, placeholder: "投稿を検索する", class: "form__sach" 
+          = form.submit "検索", class: "follow-btn" 
     .index__header__inner__nav
       .index__header__inner__nav__listsLeft
         = link_to "#", class: "index__header__inner__nav__listsLeft__left-btn" do
