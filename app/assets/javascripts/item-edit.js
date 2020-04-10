@@ -100,15 +100,28 @@ $(document).on('turbolinks:load', function(){
       var count = $('.preview-box').length;
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      console.log(id)
       $(`#preview-box__${id}`).remove();
+      // var count2 = $(".hidden-field").length;
+      // setLabel(count2);
+      // var id2 = $(this).attr('id').replace(/[^0-9]/g, '');
+      // console.log(id)
+      // $(`#item_item_images_attributes_${id}_image`).remove();
+      $(`input[name="item[item_images_attributes][${id}][_destroy]"]`).val(1);
 
+      // $(`#item_item_images_attributes_${id}_image`).remove();
+      // var t =$(`#item_item_images_attributes_${id}_image`).val();
+      // console.log(t)
       //新規登録時と編集時の場合分け==========================================================
 
       //新規投稿時
       //削除用チェックボックスの有無で判定
-      if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
+      // if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
+         if ($(`input[name="item[item_images_attributes][${id}][_destroy]"]`).length == 0) {
         //フォームの中身を削除 
-        $(`#item_images_attributes_${id}_image`).val("");
+        // check
+        $(`input[name="item[item_images_attributes][${id}][_image]"]`).val("");
+        // $(`#item_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
@@ -116,13 +129,14 @@ $(document).on('turbolinks:load', function(){
         }
         setLabel(count);
         if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+          $('.label-box').attr({id: `label-box--${id}`,for: $(`input[name="item[item_images_attributes][${id}][_image]"]`)});
+          // $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
 
         }
       } else {
-
         //投稿編集時
-        $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        $(`input[name="item[item_images_attributes][${id}][_destroy]"]`).prop('checked',true);
+        // $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
         if (count == 4) {
           $('.label-content').show();
@@ -133,7 +147,8 @@ $(document).on('turbolinks:load', function(){
         //ラベルのidとforの値を変更
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+          // $('.label-box').attr({id: `label-box--${id}`,for: `input[name="item[item_images_attributes][${id}][_image]"]`});
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
         }
       }
       //=============================================================================
