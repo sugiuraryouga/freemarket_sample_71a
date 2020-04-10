@@ -20,7 +20,8 @@ Rails.application.routes.draw do
         get 'done', to: 'card#done'
       end
     end
-
+    
+    resources :comments,only: [:create]
     member do
       get 'kakuninn'
     end
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+   
+    
 
   end
   

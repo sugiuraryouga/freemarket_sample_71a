@@ -47,6 +47,8 @@ end
     @parentcategory=@category.parent
     @images = @item.item_images
     @image = @images.first
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def edit

@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :items
-
+  has_many :comments
   validates :name, presence: true, length: { maximum: 6 }
   validates :email, presence: true
   validates :password, presence: true
