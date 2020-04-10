@@ -86,4 +86,6 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 gem 'ancestry'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 # gem 'therubyracer'
