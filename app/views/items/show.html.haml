@@ -112,16 +112,30 @@
         不適切な商品の通報
     .index__main__item__content__commentarea
      .index__main__item__content__commentarea__ul
-     = form_with url: "#", class:"index__main__item__content__commentarea__form",local: true, method: :get do |f|
-      = f.text_area :text, class:"index__main__item__content__commentarea__form__textarea" 
+      .chat-main__comments 
+       - @comments.each do |comment|
+        .chat-main__comments__comment{data: {comment: {id: comment.id}}}
+         .chat-main__comments__comment__info
+          .chat-main__comments__comment__info__content
+           = comment.content
+          .chat-main__comments__comment__info__div
+           .chat-main__comments__comment__info__name
+            = "user: #{comment.user.name}"
+           .chat-main__comments__comment__info__date
+            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+          
+      .chat-main__form
+       = form_with url: item_comments_path(@item), method: :post,class:"chat-main__form__new" do |f|
+        .chat-main__form__new__form-box
+         = f.text_area :content, class: 'index__main__item__content__commentarea__form__textarea', placeholder: 'type a comment'
+        %button.index__main__item__content__commentarea__form__submit
+         = f.submit 'コメントする',class: "submit_btn"
       %p.index__main__item__content__commentarea__form__p
        相手のことを考え丁寧なコメントを心がけましょう。
        %br
        不快な言葉遣いなどは利用制限や退会処分となることがあります。
       %br
-      %button.index__main__item__content__commentarea__form__submit
-       %icon.fa.fa-comment
-       コメントする
+   
     -if user_signed_in?
      -if @item.user_id == current_user.id
       .index__main__item__content__commentarea__form__submit__link-Purchase

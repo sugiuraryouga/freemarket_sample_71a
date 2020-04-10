@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_051052) do
+ActiveRecord::Schema.define(version: 2020_04_10_022230) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,7 +88,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id_id", null: false
     t.string "name", null: false
     t.string "text", null: false
     t.integer "price", null: false
@@ -93,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
-    t.index ["category_id_id"], name: "index_items_on_category_id_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition_id"], name: "index_items_on_condition_id"
     t.index ["deliveryaddres_id"], name: "index_items_on_deliveryaddres_id"
     t.index ["deliverycharge_id"], name: "index_items_on_deliverycharge_id"
@@ -133,21 +142,17 @@ ActiveRecord::Schema.define(version: 2020_04_07_051052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
- 
-
   add_foreign_key "cards", "users"
-
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "deliver_adresses", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "conditions"
   add_foreign_key "items", "deliveryaddres", column: "deliveryaddres_id"
   add_foreign_key "items", "deliverycharges"
   add_foreign_key "items", "deliveryspends"
   add_foreign_key "items", "users"
-
-
   add_foreign_key "profiles", "users"
-
 end

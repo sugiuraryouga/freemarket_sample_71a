@@ -371,3 +371,25 @@
 .new__mask__main__showright__title__panel-default__panel-heading__div{
   text-decoration: none;
 }
+.chat-main__form__new__form-box__input{
+   width: 100%;
+}
+.chat-main__comments__comment{
+   border: solid 1px;
+   width: 50%;
+   margin: 0 auto;
+   margin-bottom: 20px;
+   text-align: left;
+}
+.submit_btn{
+  width: 200px;
+  background-color: #3CCACE;
+  border: none;
+}
+.chat-main__comments__comment__info__name{
+  margin-left: 250px;
+  margin-right: 20px;
+}
+.chat-main__comments__comment__info__div{
+  display: flex;
+}
